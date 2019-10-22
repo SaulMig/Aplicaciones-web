@@ -89,7 +89,10 @@ class Template
                             <a href="<?php echo URL?>Equipo_OP">Equipo Oficina/Piso</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Modelo">Modelo</a>
+                            <a href="<?php echo URL?>Lugar">Lugar</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Marca">Marca</a>
                         </li>
                         <li>
                             <a href="<?php echo URL ?>login/logout">Salir</a>
