@@ -49,8 +49,16 @@
                 <div class="container justify-content-md-center col-md-12 order-md-1">
                     <form class="was-validated"  method="POST" action="<?php echo URL?>Marca/agregar" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
+                            <label for="Modelo">Modelo</label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                            <div class="invalid-feedback">
+                                Llena el campo
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="marca">Marca</label>
-                            <input type="text" class="form-control" id="marca" name="descripcion" required>
+                            <input type="text" class="form-control" id="id_marca" name="id_marca" required>
                             <div class="invalid-feedback">
                                 Llena el campo
                             </div>

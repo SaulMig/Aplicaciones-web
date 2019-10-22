@@ -1,0 +1,18 @@
+select modelo.descripcion as teclado
+from equipo_completo, modelo, marca, teclado
+where equipo_completo.id_teclado=teclado.id_teclado
+and teclado.id_modelo=modelo.id_modelo
+and modelo.id_marca=marca.id_marca;
+
+select modelo.descripcion as monitor
+from equipo_completo, modelo, marca, monitor
+where equipo_completo.id_monitor=monitor.id_monitor
+and monitor.id_modelo=modelo.id_modelo
+and modelo.id_marca=marca.id_marca;
+
+
+select modelo.descripcion as mouse
+from equipo_completo, modelo, marca, mouse
+where equipo_completo.id_mouse=mouse.id_mouse
+and mouse.id_modelo=modelo.id_modelo
+and modelo.id_marca=marca.id_marca;

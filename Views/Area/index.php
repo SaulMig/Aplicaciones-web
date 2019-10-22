@@ -1,3 +1,5 @@
+<?php
+?>
 <div class="container">
     <div class="row">
         <main role="main" class="col-md-12">
@@ -5,44 +7,40 @@
                 <h1 class="h2">Areas</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Lugar/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Area/agregar">+</a>
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"></li>
-                        <li class="nav-item"></li>
-                        <li class="nav-item dropdown"></li>
-                        <li class="nav-item"></li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Area" class="form-control mr-sm-2">
-                        <button class="btn btn-outline-success my-2 my-sm-0" disabled>
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </form>
-                </div>
-            </nav>
-            <table class="table" id="myTable">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Area</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Area</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="body_table">
+                    <?php
+                    require_once ("tabla.php");
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <h4>Agrega</h4>
 
-                <tbody id="body_table">
-                <?php
-                require_once ("tabla.php");
-                ?>
-                </tbody>
-            </table>
-        </main>
+            </div>
+        </div>
+
+        </div>
     </div>
 </div>
+
 <br>
 <br>
 <div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodal" aria-hidden="true">
@@ -56,16 +54,15 @@
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Lugar/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Area/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="Area">Area</label>
+                            <label for="titulo">Descripcion</label>
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="lugar" name="lugar" value="" required>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
                         </div>
-
                         <br>
                         <div class="modal-footer">
                             <button  class="btn btn-primary " id="enviar" type="submit">Actualizar</button>
@@ -97,17 +94,16 @@
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>Lugar/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Area/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
                 $("#id").val(datos["id_area"]);
                 $("#descripcion").val(datos["descripcion"]);
-
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Lugar/eliminar/'+id;
+            var url='<?php echo URL?>Area/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#mimodaleliminar").modal("show");
         });
@@ -117,25 +113,4 @@
             });
         });
     });
-    function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
 </script>

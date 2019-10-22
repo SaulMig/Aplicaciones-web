@@ -3,18 +3,17 @@
  * Created by PhpStorm.
  * User: Sullivan
  * Date: 22/10/2019
- * Time: 01:19 AM
+ * Time: 05:14 PM
  */
 
 namespace AppData\Model;
 
 
-class Lugar
+class Area
 {
     private $tabla="lugar";
     private  $id_area;
     private  $descripcion;
-
 
     function __construct()
     {
@@ -36,14 +35,13 @@ class Lugar
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }
-
     function add()
     {
         $sql="insert into `lugar`(`id_area`,`descripcion`) values ('0','{$this->descripcion}')";
         $this->conexion ->QuerySimple($sql);
     }
     function verify(){
-        $sql = "select * from {$this->tabla} where  descripcion='{$this->descripcion}' ";
+        $sql = "select * from {$this->tabla} where  descripcion='{$this->descripcion}'";
         $dato=$this->conexion->QueryResultado($sql);
         return $dato;
     }
@@ -66,9 +64,8 @@ class Lugar
         return $datos;
     }
     function update(){
-        $sql = "update {$this->tabla} set descripcion='{$this->descripcion}' 
+        $sql = "update {$this->tabla} set descripcion='{$this->descripcion}'
                where id_area='{$this->id_area}'";
         $this->conexion->QuerySimple($sql);
     }
-
 }

@@ -37,7 +37,7 @@ class ModeloController
         if(isset($_POST))
         {
             $this->modelo->set('descripcion',$_POST["descripcion"]);
-            $this->modelo->set('id_marca',$_POST["marca"]);
+            $this->modelo->set('id_marca',$_POST["id_marca"]);
 
 
             $this->modelo->add();
@@ -63,7 +63,7 @@ class ModeloController
         {
             $this->modelo->set("id_modelo",$id[0]);
             $this->modelo->set('descripcion',$_POST["descripcion"]);
-            $this->modelo->set('id_marca',$_POST["marca"]);
+            $this->modelo->set('id_marca',$_POST["id_marca"]);
 
             $this->modelo->update();
 

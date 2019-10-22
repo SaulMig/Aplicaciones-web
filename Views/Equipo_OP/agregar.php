@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="text-center">
-        <h2>Agregar Tipo PC</h2>
+        <h2>Agregar Equipo</h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">

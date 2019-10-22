@@ -14,7 +14,7 @@ class Modelo
     private $tabla="modelo";
     private $id_modelo;
     private $descripcion;
-    private $marca;
+    private $id_marca;
 
     function __construct()
     {
@@ -31,7 +31,7 @@ class Modelo
     }
     function add()
     {
-        $sql="insert into {$this->tabla} values('0','{$this->descripcion}','{$this->marca}')";
+        $sql="insert into {$this->tabla} values('0','{$this->descripcion}','{$this->id_marca}')";
         $this->conexion->QuerySimple($sql);
     }
     function getAll()
@@ -62,9 +62,8 @@ class Modelo
         $sql="UPDATE {$this->tabla} SET 
         id_modelo='{$this->id_modelo}', 
         descripcion='{$this->descripcion}',
-        id_marca='{$this->marca}',
-        fecha_reg='{$this->fecha_reg}'
-        WHERE id_asignaser={$this->id_asignaser}";
+        id_marca='{$this->id_marca}',
+        WHERE id_modelo={$this->id_modelo}";
         $this->conexion->QuerySimple($sql);
     }
 

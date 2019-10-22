@@ -3,18 +3,18 @@
  * Created by PhpStorm.
  * User: Sullivan
  * Date: 22/10/2019
- * Time: 01:20 AM
+ * Time: 05:14 PM
  */
 
 namespace AppData\Controller;
 
 
-class LugarController
+class AreaController
 {
     private $lugar;
     public function __construct()
     {
-        $this->lugar= new \AppData\Model\Lugar();
+        $this->lugar= new \AppData\Model\Area();
 
     }
     public function index()
@@ -28,7 +28,7 @@ class LugarController
             $this->lugar->set('descripcion',$_POST["descripcion"]);
             $this->lugar->add();
             $datos[0]=$this->lugar->getAll();
-            header("Location:".URL."Lugar");
+            header("Location:".URL."Area");
             return $datos;
         }
     }
@@ -54,7 +54,7 @@ class LugarController
             $this->lugar->set('id_area',$_POST["id"]);
             $this->lugar->set('descripcion',$_POST["descripcion"]);
             $this->lugar->update();
-            header("Location:".URL."Lugar");
+            header("Location:".URL."Area");
         }
 
     }

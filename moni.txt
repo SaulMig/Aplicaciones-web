@@ -1,0 +1,9 @@
+usuario marca modelo pulgadas area
+select marca.descripcion, modelo.descripcion,usuario.nickname,monitor.pulgadas, lugar.descripcion
+from usuario,marca,modelo,lugar,equipo_completo,prestamos,monitor
+where modelo.id_marca=marca.id_marca
+and equipo_completo.id_monitor=monitor.id_monitor
+and equipo_completo.id_area=lugar.id_area
+and prestamos.id_usuario=usuario.id_usuario
+and prestamos.id_equipo_completo=equipo_completo.id_equipo_completo
+and monitor.id_modelo=modelo.id_modelo

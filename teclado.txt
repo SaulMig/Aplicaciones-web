@@ -1,0 +1,7 @@
+SELECT usuario.nickname, marca.descripcion,modelo.descripcion
+FROM usuario,marca,modelo,prestamos,equipo_completo,teclado
+WHERE prestamos.id_usuario=usuario.id_usuario
+AND modelo.id_marca=marca.id_marca
+AND teclado.id_modelo=modelo.id_modelo
+AND equipo_completo.id_teclado=teclado.id_teclado
+and prestamos.id_equipo_completo=equipo_completo.id_equipo_completo
