@@ -4,7 +4,7 @@
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Usuarios</h1>
+                <h1 class="h2">Equipo de Computo</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_C/agregar">+</a>
@@ -32,7 +32,31 @@
         </div>
         <div class="col-sm-6">
             <div class="card">
-                <text> COlocar botones para direccionar a CRUDS de la pc, ejemplo mouse, marcas, etc</text>
+
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Marca/agregar">+</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Marca</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="body_table">
+                        <?php
+                        require_once ("tabla1.php");
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
         </div>
     </div>

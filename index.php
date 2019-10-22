@@ -3,7 +3,7 @@
 
 define('DS',DIRECTORY_SEPARATOR);
 define('ROOT',realpath(dirname(__FILE__)).DS);
-define('URL',"http://localhost/Aplicaicones-web/Aplicaicones-web/");
+define('URL',"http://localhost/Aplicaciones-web/");
 
 
 
