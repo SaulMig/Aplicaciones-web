@@ -7,22 +7,20 @@
         </div>
     </div>
     <div class="text-center">
-        <h2>Agregar una Marca</h2>
+        <h2>Agregar Tipo PC</h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
-            <form class="was-validated"  method="POST" action="<?php echo URL?>Marca/agregar" enctype="multipart/form-data" autocomplete="off">
+            <form class="was-validated"  method="POST" action="<?php echo URL?>Equipo_OP/agregar" enctype="multipart/form-data" autocomplete="off">
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Nombre">Descripcion</label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" required>
+                        <label for="Nombre">Tipo de PC</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                         <div class="invalid-feedback">
-                            Ingresa la Marca
+                            Ingresa un tipo
                         </div>
                     </div>
-
-
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>

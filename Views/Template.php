@@ -86,6 +86,12 @@ class Template
                             <a href="<?php echo URL?>Equipo_C">Equipo de Cómputo</a>
                         </li>
                         <li>
+                            <a href="<?php echo URL?>Equipo_OP">Equipo Oficina/Piso</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Modelo">Modelo</a>
+                        </li>
+                        <li>
                             <a href="<?php echo URL ?>login/logout">Salir</a>
                         </li>
                     </ul>

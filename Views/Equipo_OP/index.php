@@ -4,10 +4,10 @@
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Equipo de Computo</h1>
+                <h1 class="h2">Equipo de Oficina/Piso</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_C/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_OP/agregar">+</a>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Tipo PC</th>
+                        <th scope="col">Equipo de Oficina/Piso</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -32,10 +32,10 @@
         </div>
         <div class="col-sm-6">
             <div class="card">
-                <h4>Agregar Marca</h4>
+                <h4>Agregar Equipo</h4>
                 <div class="btn-toolbar mb-2 mb-md-1">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Marca/agregar" >+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_OP/agregar" >+</a>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <h4>Equipo de Oficina/Piso</h4>
                 <div class="btn-toolbar mb-2 mb-md-1">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Marca/agregar" >+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_OP/agregar" >+</a>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Equipo_C/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Equipo_OP/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
                             <label for="titulo">Descripcion</label>
                             <input type="hidden" name="id" id="id" value="">
@@ -106,16 +106,16 @@
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>Equipo_C/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Equipo_OP/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_tipo_pc"]);
+                $("#id").val(datos["id_tipo_objeto"]);
                 $("#descripcion").val(datos["descripcion"]);
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Equipo_C/eliminar/'+id;
+            var url='<?php echo URL?>Equipo_OP/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#mimodaleliminar").modal("show");
         });
