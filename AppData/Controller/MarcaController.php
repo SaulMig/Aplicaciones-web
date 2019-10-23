@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sullivan
- * Date: 09/10/2019
- * Time: 02:45 PM
- */
-
 namespace AppData\Controller;
 
 
@@ -17,8 +10,6 @@ class MarcaController
         $this->marca= new \AppData\Model\Marca();
 
     }
-
-
     public function index()
     {
         $datos[0]=$this->marca->getAll();

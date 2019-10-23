@@ -31,7 +31,6 @@ class Usuario
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }
-
     function add()
     {
         $sql="insert into `usuario`(`id_usuario`,`nickname`,`email`) values ('0','{$this->nickname}','{$this->email}')";
@@ -47,7 +46,6 @@ class Usuario
         $sql="delete from {$this->tabla} where id_usuario='{$id}'";
         $this->conexion->QuerySimple($sql);
     }
-
     function edit($id)
     {
         $sql="select id_usuario,nickname,email from {$this->tabla} where id_usuario='{$id}'";
