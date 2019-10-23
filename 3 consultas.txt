@@ -16,3 +16,4 @@ from equipo_completo, modelo, marca, mouse
 where equipo_completo.id_mouse=mouse.id_mouse
 and mouse.id_modelo=modelo.id_modelo
 and modelo.id_marca=marca.id_marca;
+------------------------------------------------------------------------------------------------------
