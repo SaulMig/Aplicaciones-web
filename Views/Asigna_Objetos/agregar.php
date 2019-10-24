@@ -1,4 +1,6 @@
 <?php
+    $mysqli=new mysqli('localhost','root','','proyecto');
+
 ?>
 <div class="container justify-content-md-center">
     <div align="center">
@@ -11,7 +13,7 @@
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
-            <form class="was-validated"  method="POST" action="<?php echo URL?>Asigna_objeto/agregar" enctype="multipart/form-data" autocomplete="off">
+            <form class="was-validated"  method="POST" action="<?php echo URL?>Asigna_objetos/agregar" enctype="multipart/form-data" autocomplete="off">
 
                 <div class="modal-body">
                     <div class="form-group">
@@ -26,9 +28,11 @@
                         <select id="modelo" type="text" class="validate" name="modelo">
                             <option value="" disabled selected>Selecciona el modelo</option>
                             <?php
-                            $returnmod=$datos[1];
-                            while ($row=mysqli_fetch_array($returnmod))
+
+                            $sql=$mysqli->query("SELECT modelo.desripcion from modelo");
+                            while ($row=mysqli_fetch_array($sql)) {
                                 echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                            }
                             ?>
                         </select>
                         <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>

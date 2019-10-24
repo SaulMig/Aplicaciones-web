@@ -80,6 +80,9 @@ class Template
                             <a href="<?php echo URL?>Desktops">Desktop</a>
                         </li>
                         <li>
+                            <a href="<?php echo URL?>Laptop">Laptop</a>
+                        </li>
+                        <li>
                             <a href="<?php echo URL?>Usuario">Usuarios</a>
                         </li>
                         <li>

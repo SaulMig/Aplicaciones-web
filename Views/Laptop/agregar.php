@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="text-center">
-        <h2>Agrega un Desktop</h2>
+        <h2>Agrega una Laptop</h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
@@ -35,13 +35,7 @@
                             Ingresa una marca
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="tipo_pc">Tipo de Computadora</label>
-                        <input type="text" class="form-control" id="id_tipo_pc" name="id_tipo_pc" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
-                        </div>
-                    </div>
+
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>

@@ -1,4 +1,4 @@
-select equipo.service_tag,equipo.garantia ,usuario.nickname,modelo.descripcion
+select usuario.nickname as Usuario,equipo.service_tag as Service_Tag, modelo.descripcion as Modelo,equipo.garantia
 from equipo,tipos_pc,modelo,marca,equipo_completo,prestamos,usuario
 where equipo.id_tipo_pc=tipos_pc.id_tipo_pc
 and equipo.id_modelo=modelo.id_modelo

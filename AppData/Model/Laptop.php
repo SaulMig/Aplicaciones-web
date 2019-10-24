@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Sullivan
- * Date: 23/10/2019
- * Time: 09:50 AM
+ * Date: 24/10/2019
+ * Time: 01:30 PM
  */
 
 namespace AppData\Model;
 
 
-class Desktops
+class Laptop
 {
     private $tabla="equipo";
     private $id_equipo;
@@ -40,14 +40,14 @@ class Desktops
               and equipo_completo.id_equipo=equipo.id_equipo
               AND prestamos.id_equipo_completo=equipo_completo.id_equipo_completo
               and prestamos.id_usuario=usuario.id_usuario
-              and tipos_pc.id_tipo_pc=2";
+              and tipos_pc.id_tipo_pc=1";
         $datos=$this->conexion->QueryResultado($sql);
         return $datos;
     }
     function add()
     {
         $sql="insert into `equipo`(`id_equipo`,`service_tag`,`garantia`,`id_modelo`,`id_tipo_pc`) 
-              values ('0','{$this->service_tag}','{$this->garantia}','{$this->id_modelo}','{$this->id_tipo_pc}')";
+              values ('0','{$this->service_tag}','{$this->garantia}','{$this->id_modelo}','1')";
         $this->conexion ->QuerySimple($sql);
     }
     function delete($id)
@@ -55,5 +55,4 @@ class Desktops
         $sql="delete from {$this->tabla} where id_equipo='{$id}'";
         $this->conexion->QuerySimple($sql);
     }
-
 }
