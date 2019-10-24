@@ -77,7 +77,7 @@ class Template
                             <a href="<?php echo URL?>Empleado_bienvenido">Inicio</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Cpu">Desktop</a>
+                            <a href="<?php echo URL?>Desktops">Desktop</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Usuario">Usuarios</a>
@@ -96,6 +96,9 @@ class Template
                         </li>
                         <li>
                             <a href="<?php echo URL?>Modelo">Modelo</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Asigna_objetos ">Asigna Equipo</a>
                         </li>
                         <li>
                             <a href="<?php echo URL ?>login/logout">Salir</a>
