@@ -57,5 +57,19 @@ class Asigna_objetosController
         $datos[0]=$datos1;
         return $datos;
     }
+    public function actualizar($id)
+    {
+
+        if($_POST)
+        {
+            $this->objetos->set('ip_address',$_POST["ip_address"]);
+            $this->objetos->set('id_modelo',$_POST["id_modelo"]);
+            $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);
+            $this->objetos->update();
+            header("Location:".URL."Asigna_objetos");
+        }
+
+    }
+
 
 }

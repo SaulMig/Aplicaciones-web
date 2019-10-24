@@ -42,12 +42,17 @@ class Asigna_objetos
     }
     function add()
     {
-        $sql="insert into `objetos`(`id_objeto`,`ip_addres`,`id_modelo`,`id_tipo_objeto`) values ('0','{$this->ip_address}','{$this->id_modelo}','{$this->id_tipo_objeto}')";
+        $sql="insert into `objetos`(`id_objeto`,`ip_address`,`id_modelo`,`id_tipo_objeto`) values ('0','{$this->ip_address}','{$this->id_modelo}','{$this->id_tipo_objeto}')";
         $this->conexion ->QuerySimple($sql);
     }
     function delete($id)
     {
         $sql="delete from {$this->tabla} where id_objeto='{$id}'";
+        $this->conexion->QuerySimple($sql);
+    }
+    function update(){
+        $sql = "update {$this->tabla} set ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_tipo_objeto='{$this->id_tipo_objeto}',
+               where id_objeto='{$this->id_objeto}'";
         $this->conexion->QuerySimple($sql);
     }
 

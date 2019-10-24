@@ -1,4 +1,6 @@
 <?php
+$mysqli=new mysqli('localhost','root','','proyecto');
+
 ?>
 
 <div class="container">
@@ -38,7 +40,7 @@
 
 
 
-<div class="modal fade" id="mimodalagregar" tabindex="-1" role="dialog" aria-labelledby="mimodalagregar" aria-hidden="true">
+<div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -49,38 +51,43 @@
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Asigna_objetos/agregar" enctype="multipart/form-data" autocomplete="off">
-                        <div class="form-group">
-                            <label for="direccionIP">Direccion IP</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
-                            <div class="invalid-feedback">
-                                Llena el campo
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Asigna_objetos/actualizar" enctype="multipart/form-data" autocomplete="off">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="IP">Direccion IP</label>
+                                <input type="text" class="form-control" id="ip_address" name="ip_address" required>
+                                <div class="invalid-feedback">
+                                    Llena el campo
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="input-field col s4">
-                            <select id="modelo" type="text" class="validate" name="modelo">
-                                <option value="" disabled selected>Selecciona el modelo</option>
-                                <?php
-                                $returnmod=$datos[1];
-                                while ($row=mysqli_fetch_array($returnmod))
-                                    echo "<option value='{$row[0]}'>{$row[1]}</option>";
-                                ?>
-                            </select>
-                            <label for="id_modelo" data-error="incorrecto" data-success="Correcto" >Habitacion</label>
-                        </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
+                                    <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
+                                        <option value="" disabled selected>Selecciona el modelo</option>
+                                        <?php
 
-
-
-
-
-                        <div class="form-group">
-                            <label for="equipo">Equipo</label>
-                            <input type="text" class="form-control" id="id_tipo_objeto" name="id_tipo_objeto" required>
-                            <div class="invalid-feedback">
-                                Llena el campo
+                                        $sql=$mysqli->query("SELECT * from modelo");
+                                        while ($row=mysqli_fetch_array($sql)) {
+                                            echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="modal-body">
+                                <select id="id_tipo_objeto" type="text" class="custom-select" name="id_tipo_objeto">
+                                    <option value="" disabled selected>Selecciona el equipo</option>
+                                    <?php
+                                    $returnobjt=$mysqli->query("SELECT * from tipo_objeto");
+                                    while ($row=mysqli_fetch_array($returnobjt))
+                                        echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                    ?>
+                                </select>
+                                <label for="objeto" data-error="incorrecto" data-success="Correcto" >Equipo</label>
+                            </div>
 
                         <div class="modal-footer">
                             <button  class="btn btn-primary " id="enviar" type="submit">Agregar</button>
@@ -94,7 +101,7 @@
     </div>
 
 </div>
-<div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
+<div class="modal fade" id="mimodaleliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -113,11 +120,22 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#body_table").on("click","a#act",function() {
+            var id = $(this).data("id");
+            $.get("<?php echo URL?>Asigna_Objetos/modificar/" + id, function (res) {
+                var datos = JSON.parse(res);
+                $("#id").val(datos["id_objeto"]);
+                $("#ip_address").val(datos["ip_address"]);
+                $("#id_modelo").val(datos["id_modelo"]);
+                $("#id_tipo_objeto").val(datos["id_tipo_objeto"]);
+            });
+            $("#mimodal").modal("show");
+        });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
             var url='<?php echo URL?>Asigna_objetos/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
-            $("#modal_eliminar").modal("show");
+            $("#mimodaleliminar").modal("show");
         });
         $("#eliminar_ok").click(function(){
             $.get($(this).attr("url"),function(res){

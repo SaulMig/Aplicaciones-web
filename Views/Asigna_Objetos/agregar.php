@@ -17,33 +17,35 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="direccionIP">Direccion IP</label>
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                        <label for="IP">Direccion IP</label>
+                        <input type="text" class="form-control" id="ip_address" name="ip_address" required>
                         <div class="invalid-feedback">
                             Llena el campo
                         </div>
                     </div>
 
-                    <div class="input-field col s4">
-                        <select id="modelo" type="text" class="validate" name="modelo">
-                            <option value="" disabled selected>Selecciona el modelo</option>
-                            <?php
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
+                            <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
+                                <option value="" disabled selected>Selecciona el modelo</option>
+                                <?php
 
-                            $sql=$mysqli->query("SELECT modelo.desripcion from modelo");
-                            while ($row=mysqli_fetch_array($sql)) {
-                                echo "<option value='{$row[0]}'>{$row[1]}</option>";
-                            }
-                            ?>
-                        </select>
-                        <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
+                                $sql=$mysqli->query("SELECT * from modelo");
+                                while ($row=mysqli_fetch_array($sql)) {
+                                    echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="input-field col s4">
-                        <select id="objeto" type="text" class="validate" name="objeto">
+                    <div class="modal-body">
+                        <select id="id_tipo_objeto" type="text" class="custom-select" name="id_tipo_objeto">
                             <option value="" disabled selected>Selecciona el equipo</option>
                             <?php
-                            $returnobjt=$datos[2];
-                            while ($row=mysqli_fetch_array($returnobjt))
+                            $returnobjt=$mysqli->query("SELECT * from tipo_objeto");
+                             while ($row=mysqli_fetch_array($returnobjt))
                                 echo "<option value='{$row[0]}'>{$row[1]}</option>";
                             ?>
                         </select>
@@ -53,13 +55,7 @@
 
 
 
-                    <div class="form-group">
-                        <label for="equipo">Equipo</label>
-                        <input type="text" class="form-control" id="id_tipo_objeto" name="id_tipo_objeto" required>
-                        <div class="invalid-feedback">
-                            Llena el campo
-                        </div>
-                    </div>
+
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>
