@@ -14,22 +14,18 @@ class Asigna_objetosController
     private $objetos;
     private $modelo;
     private $tipo_objeto;
-    private $marca;
 
     public function __construct()
     {
         $this->objetos= new \AppData\Model\Asigna_objetos();
         $this->modelo=new  \AppData\Model\Modelo();
         $this->tipo_objeto= new \AppData\Model\Equipo_OP();
-        $this->marca=new \AppData\Model\Marca();
     }
 
     public function index()
     {
 
         $datos[0]=$this->objetos->getAll();
-
-
         $datos2=$this->modelo->getAll();
         $datos3=$this->tipo_objeto->getAll();
 

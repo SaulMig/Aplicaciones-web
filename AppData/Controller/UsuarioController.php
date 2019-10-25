@@ -41,7 +41,6 @@ class UsuarioController
         $datos[0]=$datos1;
         return $datos;
     }
-
     public function modificar ($id)
     {
         $datos=$this->usuario->edit($id[0]);
@@ -54,11 +53,10 @@ class UsuarioController
         {
             $this->usuario->set('id_usuario',$_POST["id"]);
             $this->usuario->set('nickname',$_POST["nickname"]);
-            $this->usuario->set('email',$_POST["email"]);;
+            $this->usuario->set('email',$_POST["email"]);
             $this->usuario->update();
             header("Location:".URL."Usuario");
         }
 
     }
-
 }

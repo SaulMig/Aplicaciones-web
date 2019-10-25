@@ -1,5 +1,5 @@
 <?php
-    $mysqli=new mysqli('localhost','root','','proyecto');
+    $mysqli=new mysqli('localhost','root','','pruebas');
 
 ?>
 <div class="container justify-content-md-center">
@@ -31,7 +31,7 @@
                                 <option value="" disabled selected>Selecciona el modelo</option>
                                 <?php
 
-                                $sql=$mysqli->query("SELECT * from modelo");
+                                $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
                                 while ($row=mysqli_fetch_array($sql)) {
                                     echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                 }
@@ -39,23 +39,17 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="modal-body">
+                        <label for="objeto" data-error="incorrecto" data-success="Correcto" >Equipo</label>
                         <select id="id_tipo_objeto" type="text" class="custom-select" name="id_tipo_objeto">
                             <option value="" disabled selected>Selecciona el equipo</option>
                             <?php
-                            $returnobjt=$mysqli->query("SELECT * from tipo_objeto");
+                            $returnobjt=$mysqli->query("SELECT id_tipo_objeto,descripcion from tipo_objeto");
                              while ($row=mysqli_fetch_array($returnobjt))
                                 echo "<option value='{$row[0]}'>{$row[1]}</option>";
                             ?>
                         </select>
-                        <label for="objeto" data-error="incorrecto" data-success="Correcto" >Equipo</label>
                     </div>
-
-
-
-
-
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>

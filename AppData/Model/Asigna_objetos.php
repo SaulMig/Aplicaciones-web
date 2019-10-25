@@ -32,11 +32,10 @@ class Asigna_objetos
     }
     function getAll()
     {
-        $sql="SELECT tipo_objeto.descripcion as Equipo, marca.descripcion as marca, modelo.descripcion as modelo, objetos.ip_address,objetos.id_objeto as m
-              from tipo_objeto, objetos, modelo, marca
+        $sql="SELECT tipo_objeto.descripcion as Equipo, modelo.descripcion as modelo, objetos.ip_address,id_objeto as m
+              from tipo_objeto, objetos, modelo
               where objetos.id_tipo_objeto=tipo_objeto.id_tipo_objeto
-              and objetos.id_modelo=modelo.id_modelo
-              and modelo.id_marca=marca.id_marca";
+              and objetos.id_modelo=modelo.id_modelo";
         $datos=$this->conexion->QueryResultado($sql);
         return $datos;
     }

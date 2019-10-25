@@ -1,5 +1,5 @@
 <?php
-$mysqli=new mysqli('localhost','root','','proyecto');
+$mysqli=new mysqli('localhost','root','','pruebas');
 
 ?>
 
@@ -15,14 +15,13 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 </div>
             </div>
 
-            <table class="responsive-table" id="tabla_content">
-                <table class="table">
+            <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th>Equipo</th>
-                        <th>Marca</th>
                         <th>Modelo</th>
                         <th>Direccion</th>
+                        <th></th>
                         <th></th>
                     </tr>
                     </thead>
@@ -32,7 +31,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                     require_once ("tabla.php");
                     ?>
                     </tbody>
-                </table>
+            </table>
         </main>
     </div>
 </div>
@@ -120,17 +119,6 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#body_table").on("click","a#act",function() {
-            var id = $(this).data("id");
-            $.get("<?php echo URL?>Asigna_Objetos/modificar/" + id, function (res) {
-                var datos = JSON.parse(res);
-                $("#id").val(datos["id_objeto"]);
-                $("#ip_address").val(datos["ip_address"]);
-                $("#id_modelo").val(datos["id_modelo"]);
-                $("#id_tipo_objeto").val(datos["id_tipo_objeto"]);
-            });
-            $("#mimodal").modal("show");
-        });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
             var url='<?php echo URL?>Asigna_objetos/eliminar/'+id;

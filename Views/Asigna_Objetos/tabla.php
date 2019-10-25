@@ -4,7 +4,6 @@ while($row=mysqli_fetch_array($datos))
     echo "
      <tr>
          <td>{$row['Equipo']}</td>
-         <td>{$row['marca']}</td>
          <td>{$row['modelo']}</td>
          <td>{$row['ip_address']}</td>
          <td><a class=\"btn btn-success\" id='act'  href='#!' data-id='{$row['m']}'><span class=\"glyphicon glyphicon-refresh\"></span></a></td>
