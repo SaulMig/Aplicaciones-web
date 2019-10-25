@@ -45,7 +45,7 @@ class Asigna_objetosController
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
             $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);
             $this->objetos->add();
-            $datos[0]=$this->modelo->getAll();
+            $datos[0]=$this->objetos->getAll();
             header("Location:".URL."Asigna_objetos");
             return $datos;
         }
@@ -57,11 +57,17 @@ class Asigna_objetosController
         $datos[0]=$datos1;
         return $datos;
     }
+    public function modificar ($id)
+    {
+        $datos=$this->objetos->edit($id[0]);
+        print_r(json_encode(mysqli_fetch_assoc($datos)));
+    }
     public function actualizar($id)
     {
-
+        print_r($_POST);
         if($_POST)
         {
+            $this->objetos->set('id_objeto',$_POST["id_objeto"]);
             $this->objetos->set('ip_address',$_POST["ip_address"]);
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
             $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);
