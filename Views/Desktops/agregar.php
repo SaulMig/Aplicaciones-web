@@ -1,4 +1,5 @@
 <?php
+$mysqli=new mysqli('localhost','root','','proyecto');
 ?>
 <div class="container justify-content-md-center">
     <div align="center">
@@ -28,20 +29,19 @@
                             Ingresa una marca
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" class="form-control" id="id_modelo" name="id_modelo" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
-                        </div>
+                    <div class="mb-3">
+                        <label for="titulo">Modelo</label>
+                        <select id="id_modelo" name="id_modelo" type="text" class="custom-select" name="id_modelo">
+                            <option value="" disabled selected>Selecciona el Modelo</option>
+                            <?php
+                            $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
+                            while ($row=mysqli_fetch_array($sql)) {
+                                echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="tipo_pc">Tipo de Computadora</label>
-                        <input type="text" class="form-control" id="id_tipo_pc" name="id_tipo_pc" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
-                        </div>
-                    </div>
+
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>

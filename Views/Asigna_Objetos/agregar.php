@@ -1,5 +1,5 @@
 <?php
-    $mysqli=new mysqli('localhost','root','','pruebas');
+    $mysqli=new mysqli('localhost','root','','proyecto');
 
 ?>
 <div class="container justify-content-md-center">

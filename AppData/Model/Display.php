@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Sullivan
- * Date: 22/10/2019
- * Time: 12:48 AM
+ * Date: 25/10/2019
+ * Time: 12:30 PM
  */
 
 namespace AppData\Model;
 
 
-class Modelo
+class Display
 {
     private $tabla="modelo";
     private $id_modelo;
@@ -29,7 +29,13 @@ class Modelo
     }
     function getAll()
     {
-        $sql="SELECT modelo.descripcion,marca.descripcion as marca, id_modelo as m from modelo,marca where modelo.id_marca=marca.id_marca order by marca";
+        $sql="select marca.descripcion, modelo.descripcion,usuario.nickname,monitor.pulgadas, lugar.descripcion
+              from marca,modelo,lugar,equipo_completo,prestamos,monitor
+              where modelo.id_marca=marca.id_marca
+                and equipo_completo.id_monitor=monitor.id_monitor
+                and equipo_completo.id_area=lugar.id_area
+                and prestamos.id_equipo_completo=equipo_completo.id_equipo_completo
+                and monitor.id_modelo=modelo.id_modelo";
         $datos=$this->conexion->QueryResultado($sql);
         return $datos;
     }
@@ -61,4 +67,5 @@ class Modelo
                where id_modelo='{$this->id_modelo}'";
         $this->conexion->QuerySimple($sql);
     }
+
 }

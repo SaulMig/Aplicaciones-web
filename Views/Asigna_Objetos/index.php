@@ -1,5 +1,5 @@
 <?php
-$mysqli=new mysqli('localhost','root','','pruebas');
+$mysqli=new mysqli('localhost','root','','proyecto');
 
 ?>
 
@@ -14,6 +14,22 @@ $mysqli=new mysqli('localhost','root','','pruebas');
                     </div>
                 </div>
             </div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"></li>
+                        <li class="nav-item"></li>
+                        <li class="nav-item dropdown"></li>
+                        <li class="nav-item"></li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Equipo" class="form-control mr-sm-2">
+                        <button class="btn btn-outline-success my-2 my-sm-0" disabled>
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </div>
+            </nav>
 
             <table class="table">
                     <thead class="thead-dark">
@@ -54,6 +70,7 @@ $mysqli=new mysqli('localhost','root','','pruebas');
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="IP">Direccion IP</label>
+                                <input type="hidden" name="id" id="id" value="">
                                 <input type="text" class="form-control" id="ip_address" name="ip_address" required>
                                 <div class="invalid-feedback">
                                     Llena el campo
@@ -63,11 +80,12 @@ $mysqli=new mysqli('localhost','root','','pruebas');
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
+                                    <input type="hidden" name="id" id="id" value="">
                                     <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
                                         <option value="" disabled selected>Selecciona el modelo</option>
                                         <?php
 
-                                        $sql=$mysqli->query("SELECT * from modelo");
+                                        $sql=$mysqli->query("SELECT id_marca,descripcion from marca");
                                         while ($row=mysqli_fetch_array($sql)) {
                                             echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                         }
@@ -80,7 +98,7 @@ $mysqli=new mysqli('localhost','root','','pruebas');
                                 <select id="id_tipo_objeto" type="text" class="custom-select" name="id_tipo_objeto">
                                     <option value="" disabled selected>Selecciona el equipo</option>
                                     <?php
-                                    $returnobjt=$mysqli->query("SELECT * from tipo_objeto");
+                                    $returnobjt=$mysqli->query("SELECT id_tipo_objeto,descripcion from tipo_objeto");
                                     while ($row=mysqli_fetch_array($returnobjt))
                                         echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                     ?>
@@ -100,7 +118,7 @@ $mysqli=new mysqli('localhost','root','','pruebas');
     </div>
 
 </div>
-<div class="modal fade" id="mimodaleliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
+<div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -118,17 +136,47 @@ $mysqli=new mysqli('localhost','root','','pruebas');
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#body_table").on("click","a#elimina",function(){
-            var id=$(this).data("id");
-            var url='<?php echo URL?>Asigna_objetos/eliminar/'+id;
-            $("#eliminar_ok").attr("url",url);
-            $("#mimodaleliminar").modal("show");
+    $("#body_table").on("click","a#act",function() {
+        var id = $(this).data("id");
+        $.get("<?php echo URL?>Asigna_objetos/modificar/" + id, function (res) {
+            var datos = JSON.parse(res);
+            $("#id").val(datos["id_objeto"]);
+            $("#ip_address").val(datos["ip_address"]);
+            $("#id_modelo").val(datos["id_modelo"]);
+            $("#id_tipo_objeto").val(datos["id_tipo_objeto"]);
         });
-        $("#eliminar_ok").click(function(){
-            $.get($(this).attr("url"),function(res){
-                $("#body_table").empty().append(res);
-            });
+        $("#mimodal").modal("show");
+    });
+    $("#body_table").on("click","a#elimina",function(){
+        var id=$(this).data("id");
+        var url='<?php echo URL?>Asigna_objetos/eliminar/'+id;
+        $("#eliminar_ok").attr("url",url);
+        $("#modal_eliminar").modal("show");
+    });
+    $("#eliminar_ok").click(function(){
+        $.get($(this).attr("url"),function(res){
+            $("#body_table").empty().append(res);
         });
     });
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 </script>

@@ -49,8 +49,21 @@ class Asigna_objetos
         $sql="delete from {$this->tabla} where id_objeto='{$id}'";
         $this->conexion->QuerySimple($sql);
     }
+    function edit($id)
+    {
+        $sql="select id_equipo,ip_address,id_modelo,id_tipo_objeto from {$this->tabla} where id_objeto='{$id}'";
+        $datos=$this->conexion->queryResultado($sql);
+        return $datos;
+    }
+    function getOne($id)
+    {
+        $sql="SELECT * FROM objetos where id_objeto='{$id}'";
+        $datos=$this->conexion->QueryResultado($sql);
+        return $datos;
+    }
     function update(){
-        $sql = "update {$this->tabla} set ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_tipo_objeto='{$this->id_tipo_objeto}',
+        $sql = "update {$this->tabla} 
+                set ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_tipo_objeto='{$this->id_tipo_objeto}'
                where id_objeto='{$this->id_objeto}'";
         $this->conexion->QuerySimple($sql);
     }

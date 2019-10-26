@@ -26,12 +26,6 @@ class Asigna_objetosController
     {
 
         $datos[0]=$this->objetos->getAll();
-        $datos2=$this->modelo->getAll();
-        $datos3=$this->tipo_objeto->getAll();
-
-        $datos[1]=$datos2;
-        $datos[2]=$datos3;
-
         return $datos;
     }
     public function agregar(){
@@ -63,7 +57,7 @@ class Asigna_objetosController
         print_r($_POST);
         if($_POST)
         {
-            $this->objetos->set('id_objeto',$_POST["id_objeto"]);
+            $this->objetos->set('id_objeto',$_POST["id"]);
             $this->objetos->set('ip_address',$_POST["ip_address"]);
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
             $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);

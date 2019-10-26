@@ -1,4 +1,5 @@
 <?php
+    $mysqli=new mysqli('localhost','root','','proyecto');
 ?>
 
 <div class="container">
@@ -22,6 +23,7 @@
                         <th>Modelo</th>
                         <th>Garantia</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
 
@@ -38,33 +40,45 @@
 
 
 
-<div class="modal fade" id="mimodalagregar" tabindex="-1" role="dialog" aria-labelledby="mimodalagregar" aria-hidden="true">
+<div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Desktops/agregar" enctype="multipart/form-data" autocomplete="off">
-                        <div class="form-group">
-                            <label for="Modelo">Modelo</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
-                            <div class="invalid-feedback">
-                                Llena el campo
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Desktops/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="service_tag">Service Tag</label>
+                                <input type="text" class="form-control" id="service_tag" name="service_tag" required>
+                                <div class="invalid-feedback">
+                                    Ingresa el modelo
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="marca">Marca</label>
-                            <input type="text" class="form-control" id="id_marca" name="id_marca" required>
-                            <div class="invalid-feedback">
-                                Llena el campo
+                            <div class="form-group">
+                                <label for="garantia">Garantia</label>
+                                <input type="date" class="form-control " id="garantia" name="garantia" required>
+                                <div class="invalid-feedback">
+                                    Ingresa una marca
+                                </div>
                             </div>
-                        </div>
+                            <div class="mb-3">
+                                <label for="titulo">Modelo</label>
+                                <select id="id_modelo" name="id_modelo" type="text" class="custom-select" name="id_modelo">
+                                    <option value="" disabled selected>Selecciona el Modelo</option>
+                                    <?php
+                                    $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
+                                    while ($row=mysqli_fetch_array($sql)) {
+                                        echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
 
                         <div class="modal-footer">
                             <button  class="btn btn-primary " id="enviar" type="submit">Agregar</button>
@@ -74,9 +88,7 @@
 
             </div>
         </div>
-
     </div>
-
 </div>
 <div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -97,9 +109,20 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#body_table").on("click","a#act",function() {
+            var id = $(this).data("id");
+            $.get("<?php echo URL?>Desktops/modificar/" + id, function (res) {
+                var datos = JSON.parse(res);
+                $("#id").val(datos["id_equipo"]);
+                $("#service_tag").val(datos["service_tag"]);
+                $("#garantia").val(datos["garantia"]);
+                $("#id_modelo").val(datos["id_modelo"]);
+            });
+            $("#mimodal").modal("show");
+        });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Modelo/eliminar/'+id;
+            var url='<?php echo URL?>Desktops/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#modal_eliminar").modal("show");
         });
