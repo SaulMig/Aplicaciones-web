@@ -16,13 +16,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="Nombre">Descripcion</label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" required>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                         <div class="invalid-feedback">
                             Ingresa la Marca
                         </div>
                     </div>
-
-
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>
                     </div>

@@ -69,8 +69,8 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="titulo">Marca</label>
-                            <select id="id_marca" name="id_marca" type="text" class="custom-select" name="id_modelo">
+                            <label for="marca">Marca</label>
+                            <select id="id_marca" type="text" class="custom-select" name="id_marca">
                                 <option value="" disabled selected>Selecciona la marca</option>
                                 <?php
                                 $sql=$mysqli->query("SELECT id_marca,descripcion from marca");

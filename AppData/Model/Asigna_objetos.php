@@ -51,7 +51,7 @@ class Asigna_objetos
     }
     function edit($id)
     {
-        $sql="select id_equipo,ip_address,id_modelo,id_tipo_objeto from {$this->tabla} where id_objeto='{$id}'";
+        $sql="select id_objeto,ip_address,id_modelo,id_tipo_objeto from {$this->tabla} where id_objeto='{$id}'";
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }
@@ -62,9 +62,8 @@ class Asigna_objetos
         return $datos;
     }
     function update(){
-        $sql = "update {$this->tabla} 
-                set ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_tipo_objeto='{$this->id_tipo_objeto}'
-               where id_objeto='{$this->id_objeto}'";
+        $sql = "update {$this->tabla}  set ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_tipo_objeto='{$this->id_tipo_objeto}' 
+                where id_objeto='{$this->id_objeto}'";
         $this->conexion->QuerySimple($sql);
     }
 

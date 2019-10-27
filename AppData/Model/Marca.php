@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sullivan
- * Date: 09/10/2019
- * Time: 02:40 PM
- */
-
 namespace AppData\Model;
 
 
@@ -55,7 +48,6 @@ class Marca
         $sql="delete from {$this->tabla} where id_marca='{$id}'";
         $this->conexion->QuerySimple($sql);
     }
-
     function edit($id)
     {
         $sql="select id_marca,descripcion from {$this->tabla} where id_marca='{$id}'";
@@ -69,7 +61,7 @@ class Marca
         return $datos;
     }
     function update(){
-        $stm=$this->conexion->proc2($this->Nombre,$this->descripcion,$this->lugar,$this->fecha,$this->Fecha_fin,$this->Horario,$this->img,$this->id_evento);
+        $sql = "update {$this->tabla} set descripcion='{$this->descripcion}'where id_marca='{$this->id_marca}'";
+        $this->conexion->QuerySimple($sql);
     }
-
 }

@@ -45,7 +45,7 @@ class Modelo
     }
     function edit($id)
     {
-        $sql="select id_modelo,descripcion from {$this->tabla} where id_modelo='{$id}'";
+        $sql="select id_modelo,descripcion,id_marca from {$this->tabla} where id_modelo='{$id}'";
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }

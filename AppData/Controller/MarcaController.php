@@ -34,14 +34,11 @@ class MarcaController
         $datos[0]=$datos1;
         return $datos;
     }
-
-
     public function modificar ($id)
     {
         $datos=$this->marca->edit($id[0]);
         print_r(json_encode(mysqli_fetch_assoc($datos)));
     }
-
     public function actualizar($id)
     {
         print_r($_POST);
@@ -52,7 +49,5 @@ class MarcaController
             $this->marca->update();
             header("Location:".URL."Marca");
         }
-
     }
-
 }
