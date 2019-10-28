@@ -16,7 +16,6 @@ class Laptop
     private $garantia;
     private $service_tag;
     private $id_modelo;
-    private $id_tipo_pc;
     function __construct()
     {
         $this->conexion= new conexion();
@@ -32,15 +31,12 @@ class Laptop
     }
     function getAll()
     {
-        $sql="select equipo.service_tag as service_tag, modelo.descripcion as modelo,equipo.garantia,equipo.id_equipo as m
-              from equipo,tipos_pc,modelo,marca,equipo_completo,prestamos,usuario
+        $sql="select equipo.service_tag as service_tag, modelo.descripcion as modelo,equipo.garantia as garantia,equipo.id_equipo as m
+              from equipo,tipos_pc,modelo,marca
               where equipo.id_tipo_pc=tipos_pc.id_tipo_pc
               and equipo.id_modelo=modelo.id_modelo
               and modelo.id_marca=marca.id_marca
-              and equipo_completo.id_equipo=equipo.id_equipo
-              AND prestamos.id_equipo_completo=equipo_completo.id_equipo_completo
-              and prestamos.id_usuario=usuario.id_usuario
-              and tipos_pc.id_tipo_pc=1";
+              and tipos_pc.id_tipo_pc='1'";
         $datos=$this->conexion->QueryResultado($sql);
         return $datos;
     }
@@ -53,6 +49,23 @@ class Laptop
     function delete($id)
     {
         $sql="delete from {$this->tabla} where id_equipo='{$id}'";
+        $this->conexion->QuerySimple($sql);
+    }
+    function edit($id)
+    {
+        $sql="select id_equipo,service_tag,garantia,id_modelo from {$this->tabla} where id_equipo='{$id}'";
+        $datos=$this->conexion->queryResultado($sql);
+        return $datos;
+    }
+    function getOne($id)
+    {
+        $sql="SELECT * FROM equipo where id_equipo='{$id}'";
+        $datos=$this->conexion->QueryResultado($sql);
+        return $datos;
+    }
+    function update(){
+        $sql = "update {$this->tabla}  set service_tag='{$this->service_tag}',garantia='{$this->garantia}',id_modelo='{$this->id_modelo}' 
+                where id_equipo='{$this->id_equipo}'";
         $this->conexion->QuerySimple($sql);
     }
 }

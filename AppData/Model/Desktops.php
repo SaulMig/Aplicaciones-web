@@ -54,7 +54,7 @@ class Desktops
     }
     function edit($id)
     {
-        $sql="select service_tag,garantia,id_modelo from {$this->tabla} where id_equipo='{$id}'";
+        $sql="select id_equipo,service_tag,garantia,id_modelo from {$this->tabla} where id_equipo='{$id}'";
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }

@@ -41,7 +41,8 @@ class Asigna_objetos
     }
     function add()
     {
-        $sql="insert into `objetos`(`id_objeto`,`ip_address`,`id_modelo`,`id_tipo_objeto`) values ('0','{$this->ip_address}','{$this->id_modelo}','{$this->id_tipo_objeto}')";
+        $sql="insert into `objetos`(`id_objeto`,`ip_address`,`id_modelo`,`id_tipo_objeto`) 
+              values ('0','{$this->ip_address}','{$this->id_modelo}','{$this->id_tipo_objeto}')";
         $this->conexion ->QuerySimple($sql);
     }
     function delete($id)

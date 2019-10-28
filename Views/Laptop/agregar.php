@@ -1,4 +1,6 @@
 <?php
+$mysqli=new mysqli('localhost','root','','proyecto');
+
 ?>
 <div class="container justify-content-md-center">
     <div align="center">
@@ -11,7 +13,7 @@
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
-            <form class="was-validated"  method="POST" action="<?php echo URL?>Desktops/agregar" enctype="multipart/form-data" autocomplete="off">
+            <form class="was-validated"  method="POST" action="<?php echo URL?>Laptop/agregar" enctype="multipart/form-data" autocomplete="off">
 
                 <div class="modal-body">
                     <div class="form-group">
@@ -28,13 +30,19 @@
                             Ingresa una marca
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" class="form-control" id="id_modelo" name="id_modelo" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
-                        </div>
+                    <div class="mb-3">
+                        <label for="titulo">Modelo</label>
+                        <select id="id_modelo" name="id_modelo" type="text" class="custom-select" name="id_modelo">
+                            <option value="" disabled selected>Selecciona el Modelo</option>
+                            <?php
+                            $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
+                            while ($row=mysqli_fetch_array($sql)) {
+                                echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
+                </div>
 
                     <div class="row justify-content-md-center">
                         <button  class="btn btn-primary " id="enviar"  type="submit">Registrar</button>

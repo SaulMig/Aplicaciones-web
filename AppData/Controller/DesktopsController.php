@@ -51,7 +51,7 @@ class DesktopsController
         print_r($_POST);
         if($_POST)
         {
-            $this->equipo->set('id_equipo',$_POST["id_equipo"]);
+            $this->equipo->set('id_equipo',$_POST["id"]);
             $this->equipo->set('service_tag',$_POST["service_tag"]);
             $this->equipo->set('garantia',$_POST["garantia"]);
             $this->equipo->set('id_modelo',$_POST["id_modelo"]);
