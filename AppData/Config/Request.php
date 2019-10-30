@@ -56,9 +56,9 @@ class Request
                     $this->metodo = "index";   
              
             }
-            else if (isset($_GET['url'])?stristr($_GET['url'],'CivicosClient'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'DesktopsClient'):false)
             {
-                $this->controlador="CivicosClient";
+                $this->controlador="DesktopsClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }

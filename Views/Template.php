@@ -66,8 +66,8 @@ class Template
                 </ul>
             </nav>
 
-            <div id="wrapper">
-                <div id="sidebar-wrapper" style="background: #2196f3 ;">
+            <div id="wrapper" data-spy="scroll">
+                <div id="sidebar-wrapper" style="background: #2196f3 ;" >
                     <ul class="sidebar-nav">
 
                         <li class="sidebar-brand">
@@ -83,10 +83,16 @@ class Template
                             <a href="<?php echo URL?>Laptop">Laptop</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Usuario">Usuarios</a>
+                            <a href="<?php echo URL?>Display">Display</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Equipo_C">Equipo de Cómputo</a>
+                            <a href="<?php echo URL?>keyboard">Keyboard</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Mouse">Mouse</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Usuario">Usuarios</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Equipo_OP">Equipo Oficina/Piso</a>
@@ -101,11 +107,15 @@ class Template
                             <a href="<?php echo URL?>Modelo">Modelo</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Asigna_objetos ">Asigna Equipo</a>
+                            <a href="<?php echo URL?>Scanner">Scanners</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>PrintLabel">Print Labels</a>
                         </li>
                         <li>
                             <a href="<?php echo URL ?>login/logout">Salir</a>
                         </li>
+
                     </ul>
                 </div>
             </div>

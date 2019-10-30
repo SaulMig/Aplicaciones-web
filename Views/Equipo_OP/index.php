@@ -11,9 +11,9 @@
                     </div>
                 </div>
             </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
+    <div class="">
+        <div class="">
+            <div class="">
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
@@ -28,26 +28,6 @@
                     ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <h4>Agregar Equipo</h4>
-                <div class="btn-toolbar mb-2 mb-md-1">
-                    <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_OP/agregar" >+</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <h4>Equipo de Oficina/Piso</h4>
-                <div class="btn-toolbar mb-2 mb-md-1">
-                    <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Equipo_OP/agregar" >+</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

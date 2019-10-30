@@ -7,10 +7,10 @@ $mysqli=new mysqli('localhost','root','','proyecto');
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Desktops</h1>
+                <h1 class="h2">Teclados</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Desktops/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Mouse/agregar">+</a>
                     </div>
                 </div>
             </div>
@@ -33,9 +33,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             <table class="table" id="myTable">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Service Tag</th>
                     <th>Modelo</th>
-                    <th>Garantia</th>
+                    <th>Alambrico</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -61,24 +60,15 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Desktops/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Mouse/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="service_tag">Service_tag</label>
+                            <label for="titulo">Alambrico</label>
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="service_tag" name="service_tag" value="" required>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="garantia">Service Tag</label>
-                            <input type="date" class="form-control" id="garantia" name="garantia" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
-                        </div>
-
-
                         <div class="mb-3">
                             <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
                             <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
@@ -124,18 +114,17 @@ $mysqli=new mysqli('localhost','root','','proyecto');
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>Desktops/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Mouse/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_equipo"]);
-                $("#service_tag").val(datos["service_tag"]);
-                $("#garantia").val(datos["garantia"]);
+                $("#id").val(datos["id_mouse"]);
+                $("#descripcion").val(datos["descripcion"]);
                 $("#id_modelo").val(datos["id_modelo"]);
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Desktops/eliminar/'+id;
+            var url='<?php echo URL?>Mouse/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#modal_eliminar").modal("show");
         });

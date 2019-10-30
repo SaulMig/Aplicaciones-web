@@ -1,15 +1,16 @@
 <?php
-    $mysqli=new mysqli('localhost','root','','proyecto');
+$mysqli=new mysqli('localhost','root','','proyecto');
 ?>
+
 
 <div class="container">
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Modelo</h1>
+                <h1 class="h2">Display</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Modelo/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Display/agregar">+</a>
                     </div>
                 </div>
             </div>
@@ -30,20 +31,20 @@
                 </div>
             </nav>
             <table class="table" id="myTable">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Descripcion</th>
-                        <th>Marca</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Pulagdas</th>
+                    <th>Modelo</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
 
-                    <tbody id="body_table">
-                    <?php
-                    require_once ("tabla.php");
-                    ?>
-                    </tbody>
+                <tbody id="body_table">
+                <?php
+                require_once ("tabla.php");
+                ?>
+                </tbody>
             </table>
         </main>
     </div>
@@ -59,27 +60,29 @@
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Modelo/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Display/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="titulo">Descripción</label>
+                            <label for="titulo">Pulgadas</label>
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
+                            <input type="text" class="form-control" id="pulgadas" name="pulgadas" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="titulo">Marca</label>
-                            <select id="id_marca" name="id_marca" type="text" class="custom-select" name="id_modelo">
-                                <option value="" disabled selected>Selecciona la marca</option>
+                            <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
+                            <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
+                                <option value="" disabled selected>Selecciona el modelo</option>
                                 <?php
-                                $sql=$mysqli->query("SELECT id_marca,descripcion from marca");
+
+                                $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
                                 while ($row=mysqli_fetch_array($sql)) {
                                     echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                 }
                                 ?>
                             </select>
                         </div>
+
                         <br>
                         <div class="modal-footer">
                             <button  class="btn btn-primary " id="enviar" type="submit">Actualizar</button>
@@ -111,17 +114,17 @@
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>Modelo/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Display/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_modelo"]);
-                $("#descripcion").val(datos["descripcion"]);
-                $("#id_marca").val(datos["id_marca"]);
+                $("#id").val(datos["id_monitor"]);
+                $("#pulgadas").val(datos["pulgadas"]);
+                $("#id_modelo").val(datos["id_modelo"]);
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Modelo/eliminar/'+id;
+            var url='<?php echo URL?>Display/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#modal_eliminar").modal("show");
         });

@@ -11,9 +11,9 @@
                     </div>
                 </div>
             </div>
-    <div class="row">
+    <div class=">
         <div class="col-sm-6">
-            <div class="card">
+            <div class="">
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
@@ -30,12 +30,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <h4>Agrega</h4>
 
-            </div>
-        </div>
 
         </div>
     </div>

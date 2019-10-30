@@ -8,16 +8,16 @@ $mysqli=new mysqli('localhost','root','','proyecto');
         </div>
     </div>
     <div class="text-center">
-        <h2>Agregar un Display</h2>
+        <h2>Agregar un Teclado</h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
-            <form class="was-validated"  method="POST" action="<?php echo URL?>Display/agregar" enctype="multipart/form-data" autocomplete="off">
+            <form class="was-validated"  method="POST" action="<?php echo URL?>Keyboard/agregar" enctype="multipart/form-data" autocomplete="off">
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Nombre">Pulgdas</label>
-                        <input type="text" class="form-control" id="pulgadas" name="pulgadas" required>
+                        <label for="Nombre">Alambrico</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                         <div class="invalid-feedback">
                             Ingresa el pulgadas
                         </div>
