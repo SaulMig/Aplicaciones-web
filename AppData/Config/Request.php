@@ -63,43 +63,53 @@ class Request
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
 
-
-
-            else if (isset($_GET['url'])?stristr($_GET['url'],'CulturalesClient'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'DisplayClient'):false)
             {
-                $this->controlador="CulturalesClient";
+                $this->controlador="DisplayClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
 
-            else if (isset($_GET['url'])?stristr($_GET['url'],'DeportivosClient'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'KeyboardClient'):false)
             {
-                $this->controlador="DeportivosClient";
+                $this->controlador="KeyboardClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
 
-            else if (isset($_GET['url'])?stristr($_GET['url'],'Proximamente'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'LaptopClient'):false)
             {
-                $this->controlador="Proximamente";
+                $this->controlador="LaptopClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
-            else if (isset($_GET['url'])?stristr($_GET['url'],'MarcaClient'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'MouseClient'):false)
             {
-                $this->controlador="MarcaClient";
+                $this->controlador="MouseClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
-            else if (isset($_GET['url'])?stristr($_GET['url'],'Home_clie'):false)
+            else if (isset($_GET['url'])?stristr($_GET['url'],'PrintLabelClient'):false)
             {
-                $this->controlador="Home_clie";
+                $this->controlador="PrintLabelClient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }
-            else if(isset($_GET['url'])?stristr($_GET['url'],'MarcaClient'):false)
+            else if(isset($_GET['url'])?stristr($_GET['url'],'ScannerClient'):false)
             {
-                $this->controlador="MarcaClient";
+                $this->controlador="ScannerClient";
+
+                $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
+            }
+            else if(isset($_GET['url'])?stristr($_GET['url'],'TeleClient'):false)
+            {
+                $this->controlador="TeleClient";
+
+                $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
+            }
+            else if(isset($_GET['url'])?stristr($_GET['url'],'PrintClient'):false)
+            {
+                $this->controlador="PrintCient";
 
                 $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
             }

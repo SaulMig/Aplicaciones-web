@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Sullivan
- * Date: 28/10/2019
- * Time: 03:55 PM
+ * Date: 05/11/2019
+ * Time: 11:42 PM
  */
 
 namespace AppData\Model;
 
 
-class PrintLabel
+class Tele
 {
     private $tabla="objetos";
     private $id_objeto;
@@ -17,6 +17,7 @@ class PrintLabel
     private $id_modelo;
     private $descripcion;
     private $mac_address;
+    private $id_usuario;
 
     function __construct()
     {
@@ -33,26 +34,21 @@ class PrintLabel
     }
     function getAll()
     {
-        $sql=" select objetos.descripcion as descripcion, marca.descripcion as marca, modelo.descripcion as modelo, objetos.ip_address as ip_address, objetos.mac_address as mac_address, objetos.id_objeto as m
-                from objetos,marca,modelo,tipo_objeto
+        $sql=" select usuario.email as usuario, objetos.descripcion as descripcion, objetos.ip_address as ip_address, marca.descripcion as marca,modelo.descripcion as modelo, objetos.id_objeto as m
+                from objetos,usuario,tipo_objeto,modelo,marca
                 where objetos.id_tipo_objeto=tipo_objeto.id_tipo_objeto
-                and modelo.id_marca=marca.id_marca
                 and objetos.id_modelo=modelo.id_modelo
-                and objetos.id_tipo_objeto=402";
+                and objetos.id_usuario=usuario.id_usuario
+                and modelo.id_marca=marca.id_marca
+                and tipo_objeto.id_tipo_objeto=405 ";
         $datos=$this->conexion->QueryResultado($sql);
         return $datos;
     }
     function add()
     {
-        $sql="insert into `objetos`(`id_objeto`,`descripcion`,`ip_address`,`mac_address`,`id_modelo`,`id_tipo_objeto`) 
-              values ('0','{$this->descripcion}','{$this->ip_address}','{$this->mac_address}','{$this->id_modelo}','402')";
+        $sql="insert into `objetos`(`id_objeto`,`descripcion`,`ip_address`,`id_modelo`,`id_tipo_objeto`,`id_usuario`) 
+              values ('0','{$this->descripcion}','{$this->ip_address}','{$this->id_modelo}','405','{$this->id_usuario}')";
         $this->conexion ->QuerySimple($sql);
-    }
-    function verify()
-    {
-        $sql="select * from {$this->tabla} where descripcion='{$this->descripcion}'";
-        $dato=$this->conexion->QueryResultado($sql);
-        return $dato;
     }
     function delete($id)
     {
@@ -61,7 +57,7 @@ class PrintLabel
     }
     function edit($id)
     {
-        $sql="select id_objeto,descripcion,ip_address,mac_address,id_modelo from {$this->tabla} where id_objeto='{$id}'";
+        $sql="select id_objeto,descripcion,ip_addres,id_modelo,id_usuario from {$this->tabla} where id_objeto='{$id}'";
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }
@@ -72,8 +68,8 @@ class PrintLabel
         return $datos;
     }
     function update(){
-        $sql = "update {$this->tabla} 
-                set descripcion='{$this->descripcion}',ip_address='{$this->ip_address}',mac_address='{$this->mac_address}',id_modelo='{$this->id_modelo}' 
+        $sql = "update {$this->tabla}
+                set descripcion='{$this->descripcion}',ip_address='{$this->ip_address}',id_modelo='{$this->id_modelo}',id_usuario='{$this->id_usuario}' 
                 where id_objeto='{$this->id_objeto}'";
         $this->conexion->QuerySimple($sql);
     }

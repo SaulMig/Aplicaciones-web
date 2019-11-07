@@ -31,8 +31,9 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                     </div>
                     <div class="mb-3">
                         <label for="titulo">Modelo</label>
+
                         <select id="id_modelo" name="id_modelo" type="text" class="custom-select" name="id_modelo">
-                            <option value="" disabled selected>Selecciona el Modelo</option>
+                            <option value="" class="glyphicon-search" disabled selected>Selecciona el Modelo</option>
                             <?php
                             $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
                             while ($row=mysqli_fetch_array($sql)) {
@@ -40,6 +41,10 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                             }
                             ?>
                         </select>
+                        <div>
+                            <button> holaaa</button>
+
+                        </div>
                     </div>
 
                     <div class="row justify-content-md-center">

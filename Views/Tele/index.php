@@ -7,10 +7,10 @@ $mysqli=new mysqli('localhost','root','','proyecto');
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Display</h1>
+                <h1 class="h2">Telefonos</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Display/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Tele/agregar">+</a>
                     </div>
                 </div>
             </div>
@@ -33,8 +33,13 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             <table class="table" id="myTable">
                 <thead class="thead-dark">
                 <tr>
+                    <th>Usuario</th>
+                    <th>Extencion</th>
+                    <th>IP Address</th>
+                    <th>Marca</th>
                     <th>Modelo</th>
-                    <th>Pulgadas</th>
+
+
                     <th></th>
                     <th></th>
                 </tr>
@@ -60,15 +65,16 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Display/actualizar"  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="<?php echo URL?>Tele/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="titulo">Pulgadas</label>
+                            <label for="titulo">Extencion</label>
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="pulgadas" name="pulgadas" value="" required>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
                         </div>
+
                         <div class="mb-3">
                             <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
                             <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
@@ -76,6 +82,26 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 <?php
 
                                 $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
+                                while ($row=mysqli_fetch_array($sql)) {
+                                    echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="titulo">IP</label>
+                            <input type="text" class="form-control" id="ip_address" name="ip_address" value="" required>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Campo Requerido
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuario" data-error="incorrecto" data-success="Correcto" >Usuario</label>
+                            <select id="id_usuario" type="text" class="custom-select" name="id_usuario">
+                                <option value="" disabled selected>Selecciona el modelo</option>
+                                <?php
+
+                                $sql=$mysqli->query("SELECT id_usuario,email from usuario");
                                 while ($row=mysqli_fetch_array($sql)) {
                                     echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                 }
@@ -114,17 +140,19 @@ $mysqli=new mysqli('localhost','root','','proyecto');
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>Display/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Tele/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_monitor"]);
-                $("#pulgadas").val(datos["pulgadas"]);
+                $("#id").val(datos["id_objeto"]);
+                $("#descripcion").val(datos["descripcion"]);
+                $("#ip_address").val(datos["ip_address"]);
                 $("#id_modelo").val(datos["id_modelo"]);
+                $("#id_usuario").val(datos["id_usuario"]);
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>Display/eliminar/'+id;
+            var url='<?php echo URL?>Tele/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#modal_eliminar").modal("show");
         });

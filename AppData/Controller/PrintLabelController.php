@@ -34,7 +34,13 @@ class PrintLabelController
             $this->objetos->set('mac_address',$_POST["mac_address"]);
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
             $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);
-            $this->objetos->add();
+            $datos[1]=false;
+            if(mysqli_num_rows($this->objetos->verify())==0){
+                $this->objetos->add();
+                header("Location:".URL."PrintLabel");
+                $datos[1]=true;
+            }
+
             $datos[0]=$this->objetos->getAll();
             header("Location:".URL."PrintLabel");
             return $datos;
@@ -57,6 +63,7 @@ class PrintLabelController
         print_r($_POST);
         if($_POST)
         {
+            $this->objetos->set('id_objeto',$_POST["id"]);
             $this->objetos->set('descripcion',$_POST["descripcion"]);
             $this->objetos->set('ip_address',$_POST["ip_address"]);
             $this->objetos->set('mac_address',$_POST["mac_address"]);

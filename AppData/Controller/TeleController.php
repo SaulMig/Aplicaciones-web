@@ -2,21 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: Sullivan
- * Date: 29/10/2019
- * Time: 12:08 PM
+ * Date: 05/11/2019
+ * Time: 11:42 PM
  */
 
 namespace AppData\Controller;
 
 
-class ScannerController
+class TeleController
 {
     private $objetos;
 
 
     public function __construct()
     {
-        $this->objetos= new \AppData\Model\Scanner();
+        $this->objetos= new \AppData\Model\Tele();
 
     }
 
@@ -31,12 +31,12 @@ class ScannerController
         {
             $this->objetos->set('descripcion',$_POST["descripcion"]);
             $this->objetos->set('ip_address',$_POST["ip_address"]);
-            $this->objetos->set('mac_address',$_POST["mac_address"]);
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
             $this->objetos->set('id_tipo_objeto',$_POST["id_tipo_objeto"]);
+            $this->objetos->set('id_usuario',$_POST["id_usuario"]);
             $this->objetos->add();
             $datos[0]=$this->objetos->getAll();
-            header("Location:".URL."Scanner");
+            header("Location:".URL."Tele");
             return $datos;
         }
     }
@@ -60,10 +60,10 @@ class ScannerController
             $this->objetos->set('id_objeto',$_POST["id"]);
             $this->objetos->set('descripcion',$_POST["descripcion"]);
             $this->objetos->set('ip_address',$_POST["ip_address"]);
-            $this->objetos->set('mac_address',$_POST["mac_address"]);
             $this->objetos->set('id_modelo',$_POST["id_modelo"]);
+            $this->objetos->set('id_usuario',$_POST["id_usuario"]);
             $this->objetos->update();
-            header("Location:".URL."Scanner");
+            header("Location:".URL."Tele");
         }
 
     }

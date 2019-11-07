@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sullivan
- * Date: 29/10/2019
- * Time: 03:08 PM
- */?>
+?>
 <div class="container">
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Desktops</h1>
+                <h1 class="h2">Usuarios</h1>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,7 +15,7 @@
                         <li class="nav-item"></li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2" data-toogle="tooltip" title="Busqueda Solo por Service Tag  ">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Nickname" class="form-control mr-sm-2">
                         <button class="btn btn-outline-success my-2 my-sm-0" disabled>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
@@ -28,13 +23,10 @@
                 </div>
             </nav>
             <table class="table" id="myTable">
-                <thead class="thead-dark">
+                    <thead class="thead-dark">
                 <tr>
-                    <th>Service Tag</th>
-                    <th>Modelo</th>
-                    <th>Garantia</th>
-                    <th></th>
-                    <th></th>
+                    <th>Nickname</th>
+                    <th>Email</th>
                 </tr>
                 </thead>
 
@@ -47,12 +39,11 @@
         </main>
     </div>
 </div>
+<br>
+<br>
+
 <script type="text/javascript">
 
-        $(function () {
-            $('[data-toogle="tooltip"]').tooltip('show')
-        })
-    });
     function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;

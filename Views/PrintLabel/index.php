@@ -11,7 +11,9 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-primary btn-circle" href="<?php echo URL ?>PrintLabel/agregar">+</a>
+
                     </div>
+
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -52,6 +54,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
         </main>
     </div>
 </div>
+
+
 <div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

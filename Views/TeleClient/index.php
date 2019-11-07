@@ -1,15 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sullivan
- * Date: 29/10/2019
- * Time: 03:08 PM
- */?>
+$mysqli=new mysqli('localhost','root','','proyecto');
+?>
+
+
 <div class="container">
     <div class="row">
         <main role="main" class="col-md-12">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Desktops</h1>
+                <h1 class="h2">Telefonos</h1>
+
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,7 +19,7 @@
                         <li class="nav-item"></li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2" data-toogle="tooltip" title="Busqueda Solo por Service Tag  ">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2">
                         <button class="btn btn-outline-success my-2 my-sm-0" disabled>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
@@ -30,11 +29,11 @@
             <table class="table" id="myTable">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Service Tag</th>
+                    <th>Usuario</th>
+                    <th>Extencion</th>
+                    <th>IP Address</th>
+                    <th>Marca</th>
                     <th>Modelo</th>
-                    <th>Garantia</th>
-                    <th></th>
-                    <th></th>
                 </tr>
                 </thead>
 
@@ -47,12 +46,9 @@
         </main>
     </div>
 </div>
+
 <script type="text/javascript">
 
-        $(function () {
-            $('[data-toogle="tooltip"]').tooltip('show')
-        })
-    });
     function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;

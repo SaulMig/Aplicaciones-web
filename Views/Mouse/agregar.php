@@ -8,7 +8,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
         </div>
     </div>
     <div class="text-center">
-        <h2>Agregar un Teclado</h2>
+        <h2>Agregar un Mouse</h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">

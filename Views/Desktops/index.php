@@ -23,7 +23,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <li class="nav-item"></li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2" data-toogle="tooltip" title="Busqueda Solo por Service Tag  ">
                         <button class="btn btn-outline-success my-2 my-sm-0" disabled>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
@@ -77,12 +77,10 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 Campo Requerido
                             </div>
                         </div>
-
-
                         <div class="mb-3">
                             <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
                             <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
-                                <option value="" disabled selected>Selecciona el modelo</option>
+                                <option value="" class="glyphicon-search" disabled selected>Selecciona el modelo</option>
                                 <?php
 
                                 $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
@@ -144,6 +142,9 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 $("#body_table").empty().append(res);
             });
         });
+        $(function () {
+            $('[data-toogle="tooltip"]').tooltip('show')
+        })
     });
     function myFunction() {
         // Declare variables

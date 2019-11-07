@@ -83,13 +83,22 @@ class Template
                             <a href="<?php echo URL?>Laptop">Laptop</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Display">Display</a>
+                            <a href="<?php echo URL?>Display">Monitores</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>keyboard">Keyboard</a>
+                            <a href="<?php echo URL?>keyboard">Teclados</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Mouse">Mouse</a>
+                            <a href="<?php echo URL?>Mouse">Ratón</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Scanner">Escáner</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>PrintLabel">Impresora de Eqtiqueta</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Tele">Telefonos</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Usuario">Usuarios</a>
@@ -107,14 +116,19 @@ class Template
                             <a href="<?php echo URL?>Modelo">Modelo</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Scanner">Scanners</a>
+                            <a href="<?php echo URL?>Asigna_objetos">Objeto</a>
                         </li>
-                        <li>
-                            <a href="<?php echo URL?>PrintLabel">Print Labels</a>
-                        </li>
+
                         <li>
                             <a href="<?php echo URL ?>login/logout">Salir</a>
                         </li>
+                        <div class="btn-group" role="group">
+                            <button id="bnt1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="btn1">
+                                <a class="dropdown-item">asas</a>
+
+                            </div>
+                        </div>
 
                     </ul>
                 </div>
