@@ -101,6 +101,9 @@ class Template
                             <a href="<?php echo URL?>Tele">Telefonos</a>
                         </li>
                         <li>
+                            <a href="<?php echo URL?>Multi">Impresora Multifuncional</a>
+                        </li>
+                        <li>
                             <a href="<?php echo URL?>Usuario">Usuarios</a>
                         </li>
                         <li>
