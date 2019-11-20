@@ -27,11 +27,20 @@ class DesktopsController
         {
             $this->equipo->set('service_tag',$_POST["service_tag"]);
             $this->equipo->set('garantia',$_POST["garantia"]);
+            $this->equipo->set('garantia_fin',$_POST["garantia_fin"]);
             $this->equipo->set('id_modelo',$_POST["id_modelo"]);
-            $this->equipo->add();
+            $this->equipo->set('id_tipo_pc',$_POST["id_tipo_pc"]);
+            $datos[1]=false;
+            if(mysqli_num_rows($this->equipo->verify())==0){
+                $this->equipo->add();
+                header("Location:".URL."Desktops");
+                $datos[1]=true;
+            }
+
             $datos[0]=$this->equipo->getAll();
             header("Location:".URL."Desktops");
             return $datos;
+
         }
     }
     public function eliminar($id)
@@ -54,6 +63,7 @@ class DesktopsController
             $this->equipo->set('id_equipo',$_POST["id"]);
             $this->equipo->set('service_tag',$_POST["service_tag"]);
             $this->equipo->set('garantia',$_POST["garantia"]);
+            $this->equipo->set('garantia_fin',$_POST["garantia_fin"]);
             $this->equipo->set('id_modelo',$_POST["id_modelo"]);
             $this->equipo->update();
             header("Location:".URL."Desktops");

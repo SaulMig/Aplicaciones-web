@@ -47,15 +47,18 @@ class Template
                             <a class="nav-link" href="<?php echo URL ?>inicio">Inicio</a>
                         </li>
 
+
                         <li class="nav-item">
                             <a href="<?php echo URL?>login" class="brand-logo"><img src="Public\img\cs.png" width="60px" height="50px"/></a>
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
 
             <?php } if (isset($_SESSION["email"])){ ?>
+
 
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: #2196f3 ;">
                 <ul class="navbar-nav px-3">
@@ -64,7 +67,15 @@ class Template
                         </a>
                     </li>
                 </ul>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo URL ?>Mante_pro">Matenimiento</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
+
 
             <div id="wrapper" data-spy="scroll">
                 <div id="sidebar-wrapper" style="background: #2196f3 ;" >
@@ -108,6 +119,9 @@ class Template
                         </li>
                         <li>
                             <a href="<?php echo URL?>Equipo_OP">Equipo Oficina/Piso</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URL?>Equipo_completo">Equipo Asignados</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Area">Lugar</a>

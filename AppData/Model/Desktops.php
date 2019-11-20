@@ -16,6 +16,7 @@ class Desktops
     private $garantia;
     private $service_tag;
     private $id_modelo;
+    private $garantia_fin;
 
     function __construct()
     {
@@ -32,7 +33,7 @@ class Desktops
     }
     function getAll()
     {
-        $sql="select equipo.service_tag as service_tag, modelo.descripcion as modelo,equipo.garantia,equipo.id_equipo as m
+        $sql="select equipo.service_tag as service_tag, modelo.descripcion as modelo,equipo.garantia as garantia,equipo.garantia_fin as garantia_fin, equipo.id_equipo as m
               from equipo,tipos_pc,modelo,marca
               where equipo.id_tipo_pc=tipos_pc.id_tipo_pc
               and equipo.id_modelo=modelo.id_modelo
@@ -43,9 +44,15 @@ class Desktops
     }
     function add()
     {
-        $sql="insert into `equipo`(`id_equipo`,`service_tag`,`garantia`,`id_modelo`,`id_tipo_pc`) 
+        $sql="insert into `equipo`(`id_equipo`,`service_tag`,`garantia`,`garantia_fin`,`id_modelo`,`id_tipo_pc`) 
               values ('0','{$this->service_tag}','{$this->garantia}','{$this->id_modelo}','2')";
         $this->conexion ->QuerySimple($sql);
+    }
+    function verify()
+    {
+        $sql="select * from {$this->tabla} where service_tag='{$this->service_tag}'";
+        $dato=$this->conexion->QueryResultado($sql);
+        return $dato;
     }
     function delete($id)
     {
@@ -54,7 +61,7 @@ class Desktops
     }
     function edit($id)
     {
-        $sql="select id_equipo,service_tag,garantia,id_modelo from {$this->tabla} where id_equipo='{$id}'";
+        $sql="select id_equipo,service_tag,garantia,garantia_fin,id_modelo from {$this->tabla} where id_equipo='{$id}'";
         $datos=$this->conexion->queryResultado($sql);
         return $datos;
     }
@@ -65,13 +72,10 @@ class Desktops
         return $datos;
     }
     function update(){
-        $sql="UPDATE {$this->tabla}
-              SET service_tag='{$this->service_tag}', garantia='{$this->garantia}', id_modelo ='{$this->id_modelo}' 
-              WHERE id_equipo = '{$this->id_equipo}'"; ;
+        $sql = "update {$this->tabla} 
+                set service_tag='{$this->service_tag}',garantia='{$this->garantia}',garantia_fin='{$this->garantia_fin}',id_modelo='{$this->id_modelo}' 
+                where id_equipo='{$this->id_equipo}'";
         $this->conexion->QuerySimple($sql);
-
-
-
     }
 
 }

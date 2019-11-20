@@ -23,7 +23,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <li class="nav-item"></li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2" data-toogle="tooltip" title="Busqueda Solo por Service Tag  ">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Descripcion" class="form-control mr-sm-2">
                         <button class="btn btn-outline-success my-2 my-sm-0" disabled>
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
@@ -36,6 +36,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                     <th>Service Tag</th>
                     <th>Modelo</th>
                     <th>Garantia</th>
+                    <th>Garantia Fin</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -70,17 +71,28 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 Campo Requerido
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="garantia">Service Tag</label>
-                            <input type="date" class="form-control" id="garantia" name="garantia" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
+                        <div class="row">
+                            <div class="col s4">
+                                <label for="garantia">Garantia Inicio </label>
+                                <input type="date" class="form-control" id="garantia" name="garantia" value="" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Campo Requerido
+                                </div>
+                            </div>
+                            <div class="col s4">
+                                <label for="garantia_fin">Garantia Fin</label>
+                                <input type="date" class="form-control" id="garantia_fin" name="garantia_fin" value="" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Campo Requerido
+                                </div>
                             </div>
                         </div>
+
+
                         <div class="mb-3">
                             <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
                             <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
-                                <option value="" class="glyphicon-search" disabled selected>Selecciona el modelo</option>
+                                <option value="" disabled selected>Selecciona el modelo</option>
                                 <?php
 
                                 $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
@@ -127,6 +139,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 $("#id").val(datos["id_equipo"]);
                 $("#service_tag").val(datos["service_tag"]);
                 $("#garantia").val(datos["garantia"]);
+                $("#garantia_fin").val(datos["garantia_fin"]);
                 $("#id_modelo").val(datos["id_modelo"]);
             });
             $("#mimodal").modal("show");
@@ -142,9 +155,6 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 $("#body_table").empty().append(res);
             });
         });
-        $(function () {
-            $('[data-toogle="tooltip"]').tooltip('show')
-        })
     });
     function myFunction() {
         // Declare variables

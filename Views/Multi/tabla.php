@@ -6,6 +6,7 @@ while($row=mysqli_fetch_array($datos))
          <td>{$row['marca']}</td>
          <td>{$row['modelo']}</td>
          <td>{$row['lugar']}</td>
+          <td>{$row['ip']}</td>
          <td>{$row['copias']}</td>
          <td>{$row['impresion']}</td>
          <td>{$row['total']}</td>

@@ -19,16 +19,27 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <label for="service_tag">Service Tag</label>
                         <input type="text" class="form-control" id="service_tag" name="service_tag" required>
                         <div class="invalid-feedback">
-                            Ingresa el modelo
+                            Ingresa el Service Tag
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="garantia">Garantia</label>
-                        <input type="date" class="form-control " id="garantia" name="garantia" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
+                    <div class="row">
+                        <div class="form-group col s4">
+                            <label for="garantia">Garantia Inicio </label>
+                            <input type="date" class="form-control " id="garantia" name="garantia" required>
+                            <div class="invalid-feedback">
+                                Ingresa la Fecha de Inicio
+                            </div>
+                        </div>
+                        <div class="form-group col s4">
+                            <label for="garantia_fin">Garantia Fin </label>
+                            <input type="date" class="form-control " id="garantia_fin" name="garantia_fin" required>
+                            <div class="invalid-feedback">
+                                Ingresa la Fecha de Termino
+                            </div>
                         </div>
                     </div>
+
+
                     <div class="mb-3">
                         <label for="titulo">Modelo</label>
 
@@ -41,10 +52,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                             }
                             ?>
                         </select>
-                        <div>
-                            <button> holaaa</button>
 
-                        </div>
                     </div>
 
                     <div class="row justify-content-md-center">

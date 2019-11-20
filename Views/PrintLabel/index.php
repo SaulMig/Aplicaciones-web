@@ -90,6 +90,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 ?>
                             </select>
                         </div>
+
+
                         <div class="mb-3">
                             <label for="titulo">IP</label>
                             <input type="text" class="form-control" id="ip_address" name="ip_address" value="" required>

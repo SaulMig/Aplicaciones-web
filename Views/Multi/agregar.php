@@ -44,7 +44,7 @@
                         <option value="" disabled selected>Selecciona la IP</option>
                         <?php
 
-                            $sql=$mysqli->query("SELECT id_objeto,ip_address from objetos where id_objeto >=833 and id_objeto <=842");
+                            $sql=$mysqli->query("SELECT id_objeto,ip_address from objetos where id_objeto >=832 and id_objeto <=839");
                         while ($row=mysqli_fetch_array($sql)) {
                             echo "<option value='{$row[0]}'>{$row[1]}</option>";
                         }

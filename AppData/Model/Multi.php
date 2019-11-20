@@ -34,7 +34,7 @@ class Multi
     }
     function getAll()
     {
-        $sql=" SELECT marca.descripcion as marca, modelo.descripcion as modelo, lugar.descripcion as lugar, multi.no_copias as copias, multi.no_impresion as impresion, multi.total as total, multi.id_multi as m
+        $sql=" SELECT marca.descripcion as marca, modelo.descripcion as modelo, lugar.descripcion as lugar,objetos.ip_address as ip, multi.no_copias as copias, multi.no_impresion as impresion, multi.total as total, multi.id_multi as m
                 from marca, modelo, lugar,multi,objetos
                 where multi.id_objeto=objetos.id_objeto
                 and multi.id_area=lugar.id_area
@@ -51,7 +51,7 @@ class Multi
     }
     function verify()
     {
-        $sql="select * from {$this->tabla} where id_objeto='{$this->id_objeto}'";
+        $sql="select * from {$this->tabla} where id_multi='{$this->id_multi}'";
         $dato=$this->conexion->QueryResultado($sql);
         return $dato;
     }
@@ -74,7 +74,7 @@ class Multi
     }
     function update(){
         $sql = "update {$this->tabla} 
-                set no_copias='{$this->no_copias }',no_impresion='{$this->no_impresion}',total='{$this->total}',id_objeto='{$this->id_objeto}' ,id_area='{$this->id_area}' 
+                set no_copias='{$this->no_copias}',no_impresion='{$this->no_impresion}',total='{$this->total}',id_objeto='{$this->id_objeto}',id_area='{$this->id_area}'
                 where id_multi='{$this->id_multi}'";
         $this->conexion->QuerySimple($sql);
     }

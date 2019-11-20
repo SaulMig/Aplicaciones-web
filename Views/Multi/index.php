@@ -38,6 +38,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Area</th>
+                    <th>IP</th>
                     <th>Copias</th>
                     <th>Impresiones</th>
                     <th>Total</th>
@@ -70,40 +71,54 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <div class="container justify-content-md-center col-md-12 order-md-1">
                     <form class="was-validated"  method="POST" action="<?php echo URL?>Multi/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="titulo">Name</label>
+                            <label for="copias">No. Copias</label>
                             <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
+                            <input type="text" class="form-control" id="no_copias" name="no_copias" value="" required>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Campo Requerido
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="impresion">No. Impresiones</label>
+                            <input type="text" class="form-control" id="no_impresion" name="no_impresion" value="" required>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Campo Requerido
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="total">Total</label>
+                            <input type="text" class="form-control" id="total" name="total" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
-                            <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
-                                <option value="" disabled selected>Selecciona el modelo</option>
+                            <label for="objeto" data-error="incorrecto" data-success="Correcto" >Selecciona la IP</label>
+                            <select id="id_objeto" type="text" class="custom-select" name="id_objeto">
+                                <option value="" disabled selected>Selecciona la IP</option>
                                 <?php
 
-                                $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
+                                $sql=$mysqli->query("SELECT id_objeto,ip_address from objetos where id_objeto >=832 and id_objeto <=839 ");
                                 while ($row=mysqli_fetch_array($sql)) {
                                     echo "<option value='{$row[0]}'>{$row[1]}</option>";
                                 }
                                 ?>
                             </select>
                         </div>
+
                         <div class="mb-3">
-                            <label for="titulo">IP</label>
-                            <input type="text" class="form-control" id="ip_address" name="ip_address" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="titulo">MAC</label>
-                            <input type="text" class="form-control" id="mac_address" name="mac_address" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
+                            <label for="area" data-error="incorrecto" data-success="Correcto" >Selecciona el Area</label>
+                            <select id="id_area" type="text" class="custom-select" name="id_area">
+                                <option value="" disabled selected>Selecciona el Area</option>
+                                <?php
+
+                                $sql=$mysqli->query("SELECT id_area,descripcion from lugar ");
+                                while ($row=mysqli_fetch_array($sql)) {
+                                    echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <br>
                         <div class="modal-footer">
@@ -136,19 +151,20 @@ $mysqli=new mysqli('localhost','root','','proyecto');
     $(document).ready(function(){
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
-            $.get("<?php echo URL?>PrintLabel/modificar/" + id, function (res) {
+            $.get("<?php echo URL?>Multi/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_objeto"]);
-                $("#descripcion").val(datos["descripcion"]);
-                $("#ip_address").val(datos["ip_address"]);
-                $("#mac_address").val(datos["mac_address"]);
-                $("#id_modelo").val(datos["id_modelo"]);
+                $("#id").val(datos["id_multi"]);
+                $("#no_copias").val(datos["no_copias"]);
+                $("#no_impresion").val(datos["no_impresion"]);
+                $("#total").val(datos["total"]);
+                $("#id_objeto").val(datos["id_objeto"]);
+                $("#id_area").val(datos["id_area"]);
             });
             $("#mimodal").modal("show");
         });
         $("#body_table").on("click","a#elimina",function(){
             var id=$(this).data("id");
-            var url='<?php echo URL?>PrintLabel/eliminar/'+id;
+            var url='<?php echo URL?>Multi/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
             $("#modal_eliminar").modal("show");
         });

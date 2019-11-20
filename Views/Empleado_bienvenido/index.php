@@ -1,11 +1,13 @@
+
 <div class="row justify-content-md-center">
-    <h2>Bienvenido </h2>
+    <h2>Bienvenidos </h2>
 </div>
 <div class="row justify-content-md-center">
     <h3>	<?php echo $_SESSION["email"] ?> </h3>
 
 </div>
 <br>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-1"></div>

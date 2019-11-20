@@ -36,6 +36,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                     <th>Service Tag</th>
                     <th>Modelo</th>
                     <th>Garantia</th>
+                    <th>Garantia Fin</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -70,11 +71,20 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 Campo Requerido
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="garantia">Service Tag</label>
-                            <input type="date" class="form-control" id="garantia" name="garantia" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
+                        <div class="row">
+                            <div class="col s4">
+                                <label for="garantia">Garantia Inicio </label>
+                                <input type="date" class="form-control" id="garantia" name="garantia" value="" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Campo Requerido
+                                </div>
+                            </div>
+                            <div class="col s4">
+                                <label for="garantia_fin">Garantia Fin</label>
+                                <input type="date" class="form-control" id="garantia_fin" name="garantia_fin" value="" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Campo Requerido
+                                </div>
                             </div>
                         </div>
 
@@ -129,6 +139,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 $("#id").val(datos["id_equipo"]);
                 $("#service_tag").val(datos["service_tag"]);
                 $("#garantia").val(datos["garantia"]);
+                $("#garantia_fin").val(datos["garantia_fin"]);
                 $("#id_modelo").val(datos["id_modelo"]);
             });
             $("#mimodal").modal("show");
