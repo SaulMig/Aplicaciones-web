@@ -77,6 +77,12 @@ class Equipo_Completo
         $datos = $this->conexion->QueryResultado($sql);
         return $datos;
     }
+    function edit($id)
+    {
+        $sql="select id_equipo_completo,id_equipo,id_teclado,id_mouse,id_monitor from {$this->tabla} where id_equipo_completo='{$id}'";
+        $datos=$this->conexion->queryResultado($sql);
+        return $datos;
+    }
 
 
     function update()

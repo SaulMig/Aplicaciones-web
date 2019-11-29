@@ -27,6 +27,7 @@ class Template
             <script type="text/javascript" src="<?php echo URL?>Public/js/highcharts.js"></script>
             <script type="text/javascript" src="<?php echo URL?>Public/js/jquery.validate.min.js"></script>
 
+
         </head>
 
         <body>

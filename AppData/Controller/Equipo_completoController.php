@@ -63,14 +63,27 @@ class Equipo_CompletoController
     }
     public function modificar($id)
     {
-        $datos=$this->Equipo_Completo->getOne($id[0]);
-        return $datos;
+        $datos=$this->Equipo_Completo->edit($id[0]);
+        print_r(json_encode(mysqli_fetch_assoc($datos)));
     }
     public function actualizar($id)
     {
         if($_POST)
         {
+            /*
             $this->Equipo_Completo->set("id_equipo_completo",$id[0]);
+            $this->Equipo_Completo->set('id_equipo',$_POST["id_equipo"]);
+            $this->Equipo_Completo->set('id_teclado',$_POST["id_teclado"]);
+            $this->Equipo_Completo->set('id_mouse',$_POST["id_mouse"]);
+            $this->Equipo_Completo->set('id_monitor',$_POST["id_monitor"]);
+            $this->Equipo_Completo->update();
+
+            $datos1=$this->Equipo_Completo->getAll();
+            $datos[0]=$datos1;
+            return $datos;*/
+
+
+            $this->Equipo_Completo->set('id_equipo_completo',$id[0]);
             $this->Equipo_Completo->set('id_equipo',$_POST["id_equipo"]);
             $this->Equipo_Completo->set('id_teclado',$_POST["id_teclado"]);
             $this->Equipo_Completo->set('id_mouse',$_POST["id_mouse"]);

@@ -73,7 +73,10 @@ class PrintLabel
     }
     function update(){
         $sql = "update {$this->tabla} 
-                set descripcion='{$this->descripcion}',ip_address='{$this->ip_address}',mac_address='{$this->mac_address}',id_modelo='{$this->id_modelo}' 
+                set descripcion='{$this->descripcion}',
+                ip_address='{$this->ip_address}',
+                mac_address='{$this->mac_address}',
+                id_modelo='{$this->id_modelo}' 
                 where id_objeto='{$this->id_objeto}'";
         $this->conexion->QuerySimple($sql);
     }

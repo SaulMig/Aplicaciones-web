@@ -15,8 +15,10 @@
                     <form class="was-validated"  action="" id="save_equipo" enctype="multipart/form-data" autocomplete="off">
                         <div class="modal-body">
                             <div class="row">
+
                                 <div class="col-6">
                                     <label for="equipo" data-error="incorrecto" data-success="Correcto" >Service Tag</label>
+
                                     <select id="id_equipo" type="text" class="custom-select" name="id_equipo">
                                         <option value="" disabled selected>Selecciona el Service Tag</option>
                                         <?php
@@ -28,6 +30,7 @@
                                 </div>
                                 <div class=" col s6">
                                     <label for="teclado" data-error="incorrecto" data-success="Correcto" >Teclado</label>
+
                                     <select id="id_teclado" type="text" class="custom-select" name="id_teclado">
                                         <option value="" disabled selected>Selecciona el Teclado</option>
                                         <?php
@@ -64,11 +67,11 @@
 
                             </div>
                             <div class="modal-footer">
-                                <div class="input-field col s12">
-                                    <a href="#!" id="save_equipo_ok" class="btn btn-primary ">Registrar</a>
+                                <div class="input-field col s10">
+                                    <button type="button" class="btn btn-primary" id="save_equipo_ok" data-dismiss="modal">Registrar</button>
                                 </div>
-                                <div class="input-field col s12">
-                                    <a href="#!" id="update_equipo_ok" class="btn btn-secondary " data-id="">Actualizar</a>
+                                <div class="input-field col s10">
+                                    <button type="button" id="update_equipo_ok" class="btn btn-outline-secondary" data-dismiss="modal">Actualizar</button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +133,14 @@
         </main>
     </div>
 </div>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto"></strong>
 
+    </div>
+
+</div>
 
 <div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -179,7 +189,8 @@
             var id = $(this).data("id");
             $.get("<?php echo URL?>Equipo_Completo/modificar/" + id, function (res) {
                 var datos = JSON.parse(res);
-                $("#id").val(datos["id_equipo_completo"]);
+                $("#update_equipo_ok").data("id", datos["id_equipo_completo"]);
+                $("#id_equipo_completo").val(datos["id_equipo_completo"]);
                 $("#id_equipo").val(datos["id_equipo"]);
                 $("#id_teclado").val(datos["id_teclado"]);
                 $("#id_mouse").val(datos["id_mouse"]);
@@ -191,6 +202,7 @@
                 $.post("<?php echo URL?>Equipo_Completo/actualizar/" + id, $("#save_equipo").serialize(), function (res) {
                     $('#save_equipo').find(' option ').val('');
                     $("#body_table").empty().append(res);
+
                 });
             });
             $("#modal_registro").modal("show");
