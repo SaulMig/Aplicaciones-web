@@ -1,22 +1,19 @@
+
+
+
 <?php
-    $asn="Departamento De IT";
-    $email=$_POST['email'];
-    $asunto=$_POST['asunto'];
-    $mensaje=$_POST['mensaje'];
-    //datos para el correo
 
-    $destinatario=$email;
-    $asunto= "Limpieza de Equipo";
+    $asunto=["Asunto"];
+    $destino= $_POST["email"];
+    $mensaje =$_POST["mensaje"];
 
-    $carta= "De: $asn \n ";
-    $carta .="Correo $email \n";
-    $carta .="Asunto: $asunto\n";
-    $carta .="Mensaje: $mensaje";
+    $contenido="Asunto".$asunto."\nDestino".$destino."\nMensaje".$mensaje;
+
+    mail($destino,"contacto",$contenido);
+    header("Location:Mante_pro.html")
 
 
-//Enviar el correo
 
-    mail($destinatario,$asunto,$carta);
 
 
 ?>

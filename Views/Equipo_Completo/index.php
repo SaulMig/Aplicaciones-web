@@ -1,13 +1,11 @@
-<?php
-$mysqli=new mysqli('localhost','root','','proyecto');
-?>
 
 
-<div id="modal_registro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal_registro" aria-hidden="true">
+
+<div class="modal fade" id="modal_registro"  tabindex="-1" role="dialog" aria-labelledby="modal_registro" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Asignacion de Equipo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -18,8 +16,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <label for="service_tag" data-error="incorrecto" data-success="Correcto" >Service Tag</label>
-                                    <select id="service_tag" type="text" class="custom-select" name="service_tag">
+                                    <label for="equipo" data-error="incorrecto" data-success="Correcto" >Service Tag</label>
+                                    <select id="id_equipo" type="text" class="custom-select" name="id_equipo">
                                         <option value="" disabled selected>Selecciona el Service Tag</option>
                                         <?php
                                         $returnserv=$datos[1];
@@ -30,12 +28,12 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                 </div>
                                 <div class=" col s6">
                                     <label for="teclado" data-error="incorrecto" data-success="Correcto" >Teclado</label>
-                                    <select id="teclado" type="text" class="custom-select" name="teclado">
+                                    <select id="id_teclado" type="text" class="custom-select" name="id_teclado">
                                         <option value="" disabled selected>Selecciona el Teclado</option>
                                         <?php
                                         $returntc=$datos[2];
                                         while ($row=mysqli_fetch_array($returntc))
-                                            echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                            echo "<option value='{$row[2]}'>{$row[1]}</option>";
                                         ?>
                                     </select>
                                 </div>
@@ -43,28 +41,26 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                             <div class="row">
                                 <div class="col s6">
                                     <label for="mouse" data-error="incorrecto" data-success="Correcto" >Mouse</label>
-                                    <select id="mouse" type="text" class="custom-select" name="mouse">
+                                    <select id="id_mouse" type="text" class="custom-select" name="id_mouse">
                                         <option value="" disabled selected>Selecciona el Teclado</option>
                                         <?php
                                         $returnmo=$datos[3];
                                         while ($row=mysqli_fetch_array($returnmo))
-                                            echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                            echo "<option value='{$row[2]}'>{$row[1]}</option>";
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col s4">
                                     <label for="monitor" data-error="incorrecto" data-success="Correcto" >Monitor</label>
-                                    <select id="monitor" type="text" class="custom-select" name="monitor">
+                                    <select id="id_monitor" type="text" class="custom-select" name="id_monitor">
                                         <option value="" disabled selected>Selecciona el Teclado</option>
                                         <?php
                                         $returnmo=$datos[4];
                                         while ($row=mysqli_fetch_array($returnmo))
-                                            echo "<option value='{$row[0]}'>{$row[1]}</option>";
+                                            echo "<option value='{$row[2]}'>{$row[1]}</option>";
                                         ?>
                                     </select>
                                 </div>
-
-
 
                             </div>
                             <div class="modal-footer">
@@ -72,7 +68,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                                     <a href="#!" id="save_equipo_ok" class="btn btn-primary ">Registrar</a>
                                 </div>
                                 <div class="input-field col s12">
-                                    <a href="#!" id="update_equipo_ok" class="btn modal-close " data-id="">Actualizar</a>
+                                    <a href="#!" id="update_equipo_ok" class="btn btn-secondary " data-id="">Actualizar</a>
                                 </div>
                             </div>
                         </div>
@@ -90,10 +86,10 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <h1 class="h2">Equipo Completo</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <a href="#modal_registro" class="btn  white-text modal-trigger" id="add_asigna_e"">
-                        <i class="btn btn-primary btn-circle" href="#modal_registro">+</i>
+                        <i class="btn btn-primary btn-circle" ">+</i>
                     </a>
-
                 </div>
+
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -136,63 +132,6 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 </div>
 
 
-<div class="modal fade" id="mimodal" tabindex="-1" role="dialog" aria-labelledby="mimodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action="<?php echo URL?>Equipo_completo/actualizar"  enctype="multipart/form-data" autocomplete="off">
-                        <div class="mb-3">
-                            <label for="titulo">Name</label>
-                            <input type="hidden" name="id" id="id" value="">
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="modelo" data-error="incorrecto" data-success="Correcto" >Modelo</label>
-                            <select id="id_modelo" type="text" class="custom-select" name="id_modelo">
-                                <option value="" disabled selected>Selecciona el modelo</option>
-                                <?php
-
-                                $sql=$mysqli->query("SELECT id_modelo,descripcion from modelo");
-                                while ($row=mysqli_fetch_array($sql)) {
-                                    echo "<option value='{$row[0]}'>{$row[1]}</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="titulo">IP</label>
-                            <input type="text" class="form-control" id="ip_address" name="ip_address" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="titulo">MAC</label>
-                            <input type="text" class="form-control" id="mac_address" name="mac_address" value="" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Campo Requerido
-                            </div>
-                        </div>
-                        <br>
-                        <div class="modal-footer">
-                            <button  class="btn btn-primary " id="enviar" type="submit">Actualizar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mimodaleliminar" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -211,34 +150,17 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 </div>
 
 <script type="text/javascript">
-
-    $(document).ready(function() {
+    $(document).ready(function(){
         $('#add_asigna_e').click(function () {/*BOTON*/
-
-            $("#update_equipo_ok").hide();/*BOTONES*/
-            $("#save_equipo_ok").show();/*BOTONES*/
+            $("#update_equipo_ok").hide();/*botones*/
+            $("#save_equipo_ok").show();/*botones*/
             $("#modal_registro").modal("show");
-
         });
         $("#save_equipo_ok").click(function(){
-
             $("#save_equipo").submit();
         });
 
-
-        $("#body_table").on("click","a#act",function() {
-            var id = $(this).data("id");
-            $.get("<?php echo URL?>Equipo_Completo/modificar/" + id, function (res) {
-                var datos = JSON.parse(res);
-                $("#id").val(datos["id_objeto"]);
-                $("#descripcion").val(datos["descripcion"]);
-                $("#ip_address").val(datos["ip_address"]);
-                $("#mac_address").val(datos["mac_address"]);
-                $("#id_modelo").val(datos["id_modelo"]);
-            });
-            $("#mimodal").modal("show");
-        });
-        $("#body_table").on("click","a#elimina",function(){
+        $("#body_table").on("click","a.btn_elimina",function(){
             var id=$(this).data("id");
             var url='<?php echo URL?>Equipo_Completo/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
@@ -251,63 +173,43 @@ $mysqli=new mysqli('localhost','root','','proyecto');
         });
 
 
-        $("#save_equipo").validate({
-
-            rules:{
-                id_habitacion:{
-                    required:true,
-
-                },
-                id_servicio:{
-                    required:true,
-
-                },
-                id_estados:{
-                    required:true,
-
-                },
-                fecha_reg:{
-                    required:true,
-                },
-            },messages:{
-                id_habitacion:{
-                    required:"Selecciona una habitaación",
-
-                },
-                id_servicio:{
-                    required:"Selecciona un servicio",
-
-                },
-                id_estados:{
-                    required:"Selecciona un estado",
-
-
-                },
-                fecha_reg:{
-                    required:"Selecciona una fecha",
-                },
-            },
-            errorPlacement: function(error, element) {
-                $(element)
-                    .closest("form")
-                    .find("label[for='" + element.attr("id") + "']")
-                    .attr('data-error', error.text());
-            },
-            submitHandler:function(form){
-                $.post("<?php echo URL?>Equipo_completo/crear",$("#save_equipo").serialize(),function (res) {
+        $("#body_table").on("click","a.btn_actualiza",function() {
+            $("#save_equipo_ok").hide();
+            $("#update_equipo_ok").show();
+            var id = $(this).data("id");
+            $.get("<?php echo URL?>Equipo_Completo/modificar/" + id, function (res) {
+                var datos = JSON.parse(res);
+                $("#id").val(datos["id_equipo_completo"]);
+                $("#id_equipo").val(datos["id_equipo"]);
+                $("#id_teclado").val(datos["id_teclado"]);
+                $("#id_mouse").val(datos["id_mouse"]);
+                $("#id_monitor").val(datos["id_monitor"]);
+            });
+            $("#update_equipo_ok").click(function () {
+                var id = $(this).data("id");
+                console.log($("#save_equipo").serialize());
+                $.post("<?php echo URL?>Equipo_Completo/actualizar/" + id, $("#save_equipo").serialize(), function (res) {
+                    $('#save_equipo').find(' option ').val('');
                     $("#body_table").empty().append(res);
-                    $('#save_equipo').find('input, select').val('');
-                    Materialize.updateTextFields();
-                    Materialize.toast('Se ha insertado correctamente', 2500);
-                    console.log( $("#save_equipo").serialize());
-                })
-            }
+                });
+            });
+            $("#modal_registro").modal("show");
         });
 
-
-
-
     });
+    $("#save_equipo").validate({
+        submitHandler:function(form){
+            $.post("<?php echo URL?>Equipo_Completo/crear",$("#save_equipo").serialize(),function (res) {
+                $("#body_table").empty().append(res);
+                $('#save_equipo').find(' option').val('');
+
+            })
+        }
+    });
+
+
+
+
     function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
@@ -330,3 +232,4 @@ $mysqli=new mysqli('localhost','root','','proyecto');
         }
     }
 </script>
+

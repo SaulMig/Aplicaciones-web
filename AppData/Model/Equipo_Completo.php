@@ -13,10 +13,10 @@ class Equipo_Completo
 {
     private $tabla="equipo_completo";
     private $id_equipo_completo;
-    private $service_tag;
-    private $teclado;
-    private $mouse;
-    private $monitor;
+    private $id_equipo;
+    private $id_teclado;
+    private $id_mouse;
+    private $id_monitor;
 
     function __construct()
     {
@@ -33,7 +33,8 @@ class Equipo_Completo
     }
     function add()
     {
-        $sql="insert into {$this->tabla} values('0','{$this->service_tag}','{$this->teclado}','{$this->mouse}', '{$this->monitor}')";
+        $sql="insert into {$this->tabla} 
+              values('0','{$this->id_equipo}','{$this->id_teclado}','{$this->id_mouse}', '{$this->id_monitor}')";
         $this->conexion->QuerySimple($sql);
     }
     function getAll()
@@ -81,10 +82,10 @@ class Equipo_Completo
     function update()
     {
         $sql="UPDATE {$this->tabla} SET 
-        id_equipo='{$this->service_tag}', 
-        id_teclado='{$this->teclado}',
-        id_mouse='{$this->mouse}',
-        id_monitor='{$this->monitor}'
+        id_equipo='{$this->id_equipo}', 
+        id_teclado='{$this->id_teclado}',
+        id_mouse='{$this->id_mouse}',
+        id_monitor='{$this->id_monitor}'
         WHERE id_equipo_completo={$this->id_equipo_completo}";
         $this->conexion->QuerySimple($sql);
     }

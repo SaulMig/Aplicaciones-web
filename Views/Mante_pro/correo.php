@@ -1,17 +1,21 @@
+<?php
+$mysqli=new mysqli('localhost','root','','proyecto');
+
+?>
 <div class="container justify-content-md-center">
     <div align="center">
         <div class="card" style="width: 12%;">
-            <img src="<?php echo URL?>Public/imagenes/user.png" class="card-img-top">
+            <img src="<?php echo URL?>Public/imagenes/mail.png" class="card-img">
         </div>
     </div>
     <div class="text-center">
-        <h2>Agrega un equipo para mantenimiento</h2>
+        <h2>Email a enviar </h2>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-md-5 order-md-1">
-            <form class="was-validated"  method="POST" action=""  enctype="multipart/form-data" autocomplete="off">
+            <form class="was-validated"  method="POST" action="<?php echo URL?>Mante_pro/enviar"  enctype="multipart/form-data" autocomplete="off">
                 <div class="mb-3">
-                    <label for="usuario" data-error="incorrecto" data-success="Correcto" >Email a Mandar</label>
+                    <label for="email" data-error="incorrecto" data-success="Correcto" >Email a Mandar</label>
                     <select id="email" type="email" class="custom-select" name="email">
                         <option value="" disabled selected>Selecciona el modelo</option>
                         <?php
@@ -21,6 +25,13 @@
                         }
                         ?>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" class="form-control" id="asunto" name="asunto" value="" required>
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Campo Requerido
+                    </div>
                 </div>
 
 

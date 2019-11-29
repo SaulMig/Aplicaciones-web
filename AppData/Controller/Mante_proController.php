@@ -66,11 +66,21 @@ class Mante_proController
             $this->Mante_pro->set('fecha_mto',$_POST["fecha_mto"]);
             $this->Mante_pro->set('fecha_proximo',$_POST["fecha_proximo"]);
             $this->Mante_pro->set('observacion',$_POST["observacion"]);
-
             $this->Mante_pro->update();
             header("Location:".URL."Mante_pro");
         }
 
+    }
+    public function enviar()
+    {
+        $asunto=["asunto"];
+        $destino= $_POST["email"];
+        $mensaje =$_POST["mensaje"];
+
+        $contenido="Asunto".$asunto."\nDestino".$destino."\nMensaje".$mensaje;
+
+        mail($destino,"contacto",$contenido);
+        header("Location:Mante_pro.html");
     }
 
 }

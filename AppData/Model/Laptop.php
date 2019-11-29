@@ -44,8 +44,8 @@ class Laptop
     }
     function add()
     {
-        $sql="insert into `equipo`(`id_equipo`,`service_tag`,`garantia`,`id_modelo`,`id_tipo_pc`) 
-              values ('0','{$this->service_tag}','{$this->garantia}','{$this->id_modelo}','1')";
+        $sql="insert into `equipo`(`id_equipo`,`service_tag`,`garantia`,`garantia_fin`,`id_modelo`,`id_tipo_pc`) 
+              values ('0','{$this->service_tag}','{$this->garantia}','{$this->garantia_fin}','{$this->id_modelo}','1')";
         $this->conexion ->QuerySimple($sql);
     }
     function verify()

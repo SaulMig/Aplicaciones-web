@@ -10,7 +10,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <h1 class="h2">Mantenimiento Común</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Mante_pro/agregar">+</a>
+                        <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Mante_pro/agregar"></span>+</a>
+                        <a class="btn btn-outline-warning btn-circle" id='enviar' href="<?php echo URL ?>Mante_pro/correo"><span class="glyphicon glyphicon-send"></span></a>
 
                     </div>
 
@@ -73,6 +74,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 
                             <div class="mb-3">
                                 <label for="id_pretamo" data-error="incorrecto" data-success="Correcto" >Equipo</label>
+                                <input type="hidden" name="id" id="id" value="">
                                 <select id="id_prestamo" type="text" class="custom-select" name="id_prestamo" disabled>
                                     <option value="" disabled selected>Nombre Equipo</option>
                                     <?php
@@ -87,15 +89,15 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <div class="row">
                             <div class="col-6">
                                 <label for="fecha_mto">Fecha anterior </label>
-                                <input type="date" class="form-control" id="fecha_mto" name="fecha_mto" value="" required>
+                                <input type="date" class="form-control" id="fecha_mto" name="fecha_mto" value=""  required>
                                 <div class="invalid-feedback" style="width: 100%;">
                                     Campo Requerido
                                 </div>
                             </div>
 
                             <div class="col-6">
-                                    <label for="fecha_prx">Fecha Proxima </label>
-                                    <input type="date" class="form-control" id="fecha_prx" name="fecha_prx" value="" required>
+                                    <label for="fecha_proximo">Fecha Proxima </label>
+                                    <input type="date" class="form-control" id="fecha_proximo" name="fecha_proximo" value=""  required>
                                     <div class="invalid-feedback" style="width: 100%;">
                                         Campo Requerido
                                     </div>
@@ -136,11 +138,12 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             </div>
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
-                    <form class="was-validated"  method="POST" action=""  enctype="multipart/form-data" autocomplete="off">
+                    <form class="was-validated"  method="POST" action="" id="save_emial" enctype="multipart/form-data" autocomplete="off">
+
                         <div class="mb-3">
                             <label for="usuario" data-error="incorrecto" data-success="Correcto" >Email a Mandar</label>
                             <select id="email" type="email" class="custom-select" name="email">
-                                <option value="" disabled selected>Selecciona el modelo</option>
+                                <option value="" disabled selected>Selecciona el E-mail</option>
                                 <?php
                                 $sql=$mysqli->query("SELECT id_usuario,email from usuario");
                                 while ($row=mysqli_fetch_array($sql)) {
@@ -152,8 +155,8 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 
 
                         <div class="mb-3">
-                            <label for="titulo">Cuerpo del Correo</label>
-                            <input type="text" class="form-control" id="mensaje" name="mensaje" value="" required>
+                            <label for="mensaje">Cuerpo del Correo</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" required></textarea>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Campo Requerido
                             </div>
@@ -181,12 +184,22 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 var datos = JSON.parse(res);
                 $("#id").val(datos["id_mantenimiento_pro"]);
                 $("#fecha_mto").val(datos["fecha_mto"]);
-                $("#fecha_prx").val(datos["fecha_proximo"]);
+                $("#fecha_proximo").val(datos["fecha_proximo"]);
                 $("#observacion").val(datos["observacion"]);
                 $("#id_prestamo").val(datos["id_prestamo"]);
             });
             $("#mimodal").modal("show");
         });
+
+
+        $("#body_table").on("click","a#enviar",function () {
+            var id =$(this).data("id");
+            $.post("<?php echo URL?>Mante_pro/enviar/");
+        });
+
+
+
+
         $("#body_table").on("click","a#enviar",function(){
             var id=$(this).data("id");
             var url='<?php echo URL?>Mante_pro/enviar/'+id;

@@ -106,7 +106,7 @@ class Template
                             <a href="<?php echo URL?>Scanner">Escáner</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>PrintLabel">Impresora de Eqtiqueta</a>
+                            <a href="<?php echo URL?>PrintLabel">Impresora de Etiqueta</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Tele">Telefonos</a>
@@ -121,7 +121,7 @@ class Template
                             <a href="<?php echo URL?>Equipo_OP">Equipo Oficina/Piso</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>Equipo_completo">Equipo Asignados</a>
+                            <a href="<?php echo URL?>Equipo_Completo">Equipo Asignados</a>
                         </li>
                         <li>
                             <a href="<?php echo URL?>Area">Lugar</a>

@@ -90,8 +90,7 @@ class Mante_pro
         $sql = "update {$this->tabla} 
                 set fecha_mto='{$this->fecha_mto}',
                 fecha_proximo='{$this->fecha_proximo}',
-                observacion='{$this->observacion}'
-                    id_prestamo='{$this->id_prestamo}'
+                observacion='{$this->observacion}' 
                where id_mantenimiento_pro='{$this->id_mantenimiento_pro}'";
         $this->conexion->QuerySimple($sql);
     }

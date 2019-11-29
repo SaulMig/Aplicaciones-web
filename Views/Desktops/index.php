@@ -11,6 +11,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <a class="btn btn-primary btn-circle" href="<?php echo URL ?>Desktops/agregar">+</a>
+
                     </div>
                 </div>
             </div>
@@ -64,7 +65,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 <div class="container justify-content-md-center col-md-12 order-md-1">
                     <form class="was-validated"  method="POST" action="<?php echo URL?>Desktops/actualizar"  enctype="multipart/form-data" autocomplete="off">
                         <div class="mb-3">
-                            <label for="service_tag">Service_tag</label>
+                            <label for="service_tag">Service tag</label>
                             <input type="hidden" name="id" id="id" value="">
                             <input type="text" class="form-control" id="service_tag" name="service_tag" value="" required>
                             <div class="invalid-feedback" style="width: 100%;">

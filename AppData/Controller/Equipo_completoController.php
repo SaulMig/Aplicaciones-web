@@ -9,13 +9,13 @@
 namespace AppData\Controller;
 
 
-class Equipo_completoController
+class Equipo_CompletoController
 {
-    private $equipo_c,$equipo,$teclado,$mouse,$monitor;
+    private $Equipo_Completo,$equipo,$teclado,$mouse,$monitor;
 
     public function __construct()
     {
-        $this->equipo_c= new \AppData\Model\Equipo_Completo();
+        $this->Equipo_Completo= new \AppData\Model\Equipo_Completo();
 
         $this->equipo= new \AppData\Model\Equipo();
         $this->monitor=new \AppData\Model\Display();
@@ -25,7 +25,7 @@ class Equipo_completoController
 
     public function index()
     {
-        $datos1=$this->equipo_c->getAll();
+        $datos1=$this->Equipo_Completo->getAll();
 
         $datos2=$this->equipo->getAll();
         $datos3=$this->teclado->getAll();
@@ -44,40 +44,40 @@ class Equipo_completoController
     public function crear(){
         if(isset($_POST))
         {
-            $this->equipo_c->set('service_tag',$_POST["service_tag"]);
-            $this->equipo_c->set('teclado',$_POST["teclado"]);
-            $this->equipo_c->set('mouse',$_POST["mouse"]);
-            $this->equipo_c->set('monitor',$_POST["monitor"]);
+            $this->Equipo_Completo->set('id_equipo',$_POST["id_equipo"]);
+            $this->Equipo_Completo->set('id_teclado',$_POST["id_teclado"]);
+            $this->Equipo_Completo->set('id_mouse',$_POST["id_mouse"]);
+            $this->Equipo_Completo->set('id_monitor',$_POST["id_monitor"]);
 
-            $this->equipo_c->add();
-            $datos[0]=$this->equipo_c->getAll();
+            $this->Equipo_Completo->add();
+            $datos[0]=$this->Equipo_Completo->getAll();
             return $datos;
         }
     }
     public function eliminar($id)
     {
-        $this->equipo_c->delete($id[0]);
-        $datos1=$this->equipo_c->getAll();
+        $this->Equipo_Completo->delete($id[0]);
+        $datos1=$this->Equipo_Completo->getAll();
         $datos[0]=$datos1;
         return $datos;
     }
     public function modificar($id)
     {
-        $datos=$this->equipo_c->getOne($id[0]);
+        $datos=$this->Equipo_Completo->getOne($id[0]);
         return $datos;
     }
     public function actualizar($id)
     {
         if($_POST)
         {
-            $this->equipo_c->set("id_quipo_completo",$id[0]);
-            $this->equipo_c->set('service_tag',$_POST["service_tag"]);
-            $this->equipo_c->set('teclado',$_POST["teclado"]);
-            $this->equipo_c->set('mouse',$_POST["mouse"]);
-            $this->equipo_c->set('monitor',$_POST["monitor"]);
-            $this->equipo_c->update();
+            $this->Equipo_Completo->set("id_equipo_completo",$id[0]);
+            $this->Equipo_Completo->set('id_equipo',$_POST["id_equipo"]);
+            $this->Equipo_Completo->set('id_teclado',$_POST["id_teclado"]);
+            $this->Equipo_Completo->set('id_mouse',$_POST["id_mouse"]);
+            $this->Equipo_Completo->set('id_monitor',$_POST["id_monitor"]);
+            $this->Equipo_Completo->update();
 
-            $datos1=$this->equipo_c->getAll();
+            $datos1=$this->Equipo_Completo->getAll();
             $datos[0]=$datos1;
             return $datos;
         }

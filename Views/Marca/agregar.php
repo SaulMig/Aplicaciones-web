@@ -3,7 +3,7 @@
 <div class="container justify-content-md-center">
     <div align="center">
         <div class="card" style="width: 12%;">
-            <img src="<?php echo URL?>Public/imagenes/user.png" class="card-img-top">
+            <img src="<?php echo URL?>Public/imagenes/descarga.png" class="card-img-top">
         </div>
     </div>
     <div class="text-center">

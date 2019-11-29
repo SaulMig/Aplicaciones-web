@@ -68,6 +68,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
             <div class="modal-body">
                 <div class="container justify-content-md-center col-md-12 order-md-1">
                     <form class="was-validated"  method="POST" action="<?php echo URL?>PrintLabel/actualizar"  enctype="multipart/form-data" autocomplete="off">
+
                         <div class="mb-3">
                             <label for="titulo">Name</label>
                             <input type="hidden" name="id" id="id" value="">

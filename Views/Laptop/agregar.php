@@ -5,7 +5,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 <div class="container justify-content-md-center">
     <div align="center">
         <div class="card" style="width: 12%;">
-            <img src="<?php echo URL?>Public/imagenes/user.png" class="card-img-top">
+            <img src="<?php echo URL?>Public/imagenes/lap.png" class="card-img-top">
         </div>
     </div>
     <div class="text-center">
@@ -23,12 +23,22 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                             Ingresa el modelo
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="garantia">Garantia</label>
-                        <input type="date" class="form-control " id="garantia" name="garantia" required>
-                        <div class="invalid-feedback">
-                            Ingresa una marca
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="garantia">Garantia</label>
+                            <input type="date" class="form-control " id="garantia" name="garantia" required>
+                            <div class="invalid-feedback">
+                                Ingresa una marca
+                            </div>
                         </div>
+                        <div class="form-group col-6">
+                            <label for="garantia_fin">Garantia Fin</label>
+                            <input type="date" class="form-control " id="garantia_fin" name="garantia_fin" required>
+                            <div class="invalid-feedback">
+                                Ingresa una marca
+                            </div>
+                        </div>
+
                     </div>
                     <div class="mb-3">
                         <label for="titulo">Modelo</label>

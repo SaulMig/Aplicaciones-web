@@ -98,7 +98,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <div class="mb-3">
                             <label for="usuario" data-error="incorrecto" data-success="Correcto" >Usuario</label>
                             <select id="id_usuario" type="text" class="custom-select" name="id_usuario">
-                                <option value="" disabled selected>Selecciona el modelo</option>
+                                <option value="" disabled selected>Selecciona el Usuario</option>
                                 <?php
 
                                 $sql=$mysqli->query("SELECT id_usuario,email from usuario");
@@ -112,6 +112,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                         <br>
                         <div class="modal-footer">
                             <button  class="btn btn-primary " id="enviar" type="submit">Actualizar</button>
+
                         </div>
                     </form>
                 </div>
@@ -138,6 +139,7 @@ $mysqli=new mysqli('localhost','root','','proyecto');
 
 <script type="text/javascript">
     $(document).ready(function(){
+
         $("#body_table").on("click","a#act",function() {
             var id = $(this).data("id");
             $.get("<?php echo URL?>Tele/modificar/" + id, function (res) {
@@ -149,8 +151,9 @@ $mysqli=new mysqli('localhost','root','','proyecto');
                 $("#id_usuario").val(datos["id_usuario"]);
             });
             $("#mimodal").modal("show");
+            $("")
         });
-        $("#body_table").on("click","a#elimina",function(){
+        $("#body_table").on("click","a.elimina",function(){
             var id=$(this).data("id");
             var url='<?php echo URL?>Tele/eliminar/'+id;
             $("#eliminar_ok").attr("url",url);
